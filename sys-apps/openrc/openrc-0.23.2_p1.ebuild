@@ -10,19 +10,26 @@ DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
 
 if [[ ${PV} == "9999" ]]; then
+	MY_PV=${PV}
 	EGIT_REPO_URI="git://github.com/OpenRC/${PN}.git"
 	inherit git-r3
+	MY_PV=${PV}
 else
 	MY_PV=$(get_version_component_range 1-3 ${PV})
 	S=${WORKDIR}/${PN}-${MY_PV}
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="audit debug ncurses pam newnet prefix +netifrc selinux static-libs
-	tools unicode kernel_linux kernel_FreeBSD"
+	tools unicode kernel_linux kernel_FreeBSD
+	cli-args-colon cli-args-ddash cli-args-dasha
+"
+
+# JRG: Only support one syntax patch at a time.
+REQUIRED_USE="( ?? ( cli-args-colon cli-args-ddash cli-args-dasha ) )"
 
 COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -66,7 +73,9 @@ src_prepare() {
 		sed -i "/^GITVER[[:space:]]*=/s:=.*:=${ver}:" mk/gitver.mk || die
 	fi
 
-	epatch "${FILESDIR}/${P}-cmd-args-patch1.patch"
+	use cli-args-colon && epatch "${FILESDIR}/${P}-cmd-args-colon.patch"
+	use cli-args-ddash && epatch "${FILESDIR}/${P}-cmd-args-ddash.patch"
+	use cli-args-dasha && epatch "${FILESDIR}/${P}-cmd-args-dasha.patch"
 
 	# Allow user patches to be applied without modifying the ebuild
 	eapply_user

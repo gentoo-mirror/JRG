@@ -1,21 +1,22 @@
 diff --git a/make-patch.sh b/make-patch.sh
 new file mode 100755
-index 0000000..df7a484
+index 0000000..10141fb
 --- /dev/null
 +++ b/make-patch.sh
-@@ -0,0 +1,19 @@
+@@ -0,0 +1,20 @@
 +#!/bin/sh
 +
-+EBUILD_PATH="/usr/local/portage/local/sys-apps/openrc"
-+PV="openrc-0.23.2"
++EBUILD_PATH="/usr/local/portage/jrg/sys-apps/openrc"
++PV="openrc-0.23.2_p1"
 +
-+PATCHNO="$1"
-+if [ -z "${PATCHNO}" ] ; then
-+	PATCHNO=1
++SUFFIX="$1"
++if [ -z "${SUFFIX}" ] ; then
++	echo "$0: Error: Must specify patch suffix."
++	exit 1
 +fi
 +
-+echo "Copying patch #${PATCHNO} to the local overlay."
-+PATCHNAME="${PV}-cmd-args-patch${PATCHNO}.patch"
++echo "Copying patch #${SUFFIX} to the local overlay."
++PATCHNAME="${PV}-cmd-args-${SUFFIX}.patch"
 +
 +set -x
 +git diff master >/tmp/${PATCHNAME}
@@ -24,40 +25,43 @@ index 0000000..df7a484
 +sudo rm /tmp/${PATCHNAME}
 +sudo ebuild ${EBUILD_PATH}/${PV}.ebuild manifest
 diff --git a/man/rc-service.8 b/man/rc-service.8
-index 80deb5e..350ca1c 100644
+index 80deb5e..1c6dac5 100644
 --- a/man/rc-service.8
 +++ b/man/rc-service.8
-@@ -17,24 +17,36 @@
+@@ -17,24 +17,39 @@
  .Sh SYNOPSIS
  .Nm
  .Op Fl i , -ifexists
 -.Ar service cmd
 -.Op Ar ...
-+.Ar service
-+.Op cmd...
-+.Oo
-+.Ar cmd: Op Ar arg... Ns
-+.Ar ...
-+.Oc
++.Ar service Op cmd...
  .Nm
  .Op Fl I , -ifinactive
 -.Ar service cmd
 -.Op Ar ...
-+.Ar service
-+.Op cmd...
-+.Oo
-+.Ar cmd: Op Ar arg... Ns
-+.Ar ...
-+.Oc
++.Ar service Op cmd...
  .Nm
  .Op Fl N , -ifnotstarted
 -.Ar service cmd
 -.Op Ar ...
-+.Ar service
-+.Op cmd...
++.Ar service Op cmd...
++.Nm
++.Op Fl i , -ifexists
++.Ar -a service
 +.Oo
-+.Ar cmd: Op Ar arg... Ns
-+.Ar ...
++.Ar cmd Op Ar arg...
++.Oc
++.Nm
++.Op Fl I , -ifinactive
++.Ar -a service
++.Oo
++.Ar cmd Op Ar arg...
++.Oc
++.Nm
++.Op Fl N , -ifnotstarted
++.Ar -a service
++.Oo
++.Ar cmd Op Ar arg...
 +.Oc
  .Nm
  .Fl e , -exists
@@ -72,7 +76,7 @@ index 80deb5e..350ca1c 100644
  .Sh DESCRIPTION
  Service scripts could be in different places on different systems.
  .Nm
-@@ -52,11 +64,12 @@ is given then
+@@ -52,11 +67,13 @@ is given then
  .Nm
  returns 0 if the service exists but is in the wrong state.
  .Pp
@@ -86,11 +90,12 @@ index 80deb5e..350ca1c 100644
 +the service name can be followed by one or more service commands
 +(although there's typically only one). In addition, some service
 +commands (for some services) can take arguments, the presence of
-+which is indicated by appending a colon to the service command.
++which is indicated by the -a command line option. In this mode
++only a single service command is supported.
  .Pp
  .Fl e , -exists
  return 0 if it can find
-@@ -64,6 +77,12 @@ return 0 if it can find
+@@ -64,6 +81,12 @@ return 0 if it can find
  otherwise -1.
  .Fl r , -resolve
  does the same and also prints the full path of the service to stdout.
@@ -156,7 +161,7 @@ index fd20971..b44a92b 100644
  
  extern const char *applet;
 diff --git a/src/rc/openrc-run.c b/src/rc/openrc-run.c
-index bb79f42..e27369d 100644
+index bb79f42..c09f345 100644
 --- a/src/rc/openrc-run.c
 +++ b/src/rc/openrc-run.c
 @@ -63,7 +63,7 @@
@@ -164,22 +169,30 @@ index bb79f42..e27369d 100644
  const char *applet = NULL;
  const char *extraopts = "stop | start | restart | describe | zap";
 -const char *getoptstring = "dDsSvl:Z" getoptstring_COMMON;
-+const char *getoptstring = "+dDsSvl:Z" getoptstring_COMMON;
++const char *getoptstring = "+dDsSvl:Za" getoptstring_COMMON;
  const struct option longopts[] = {
  	{ "debug",      0, NULL, 'd'},
  	{ "dry-run",    0, NULL, 'Z'},
-@@ -1099,6 +1099,32 @@ service_plugable(void)
+@@ -71,6 +71,7 @@ const struct option longopts[] = {
+ 	{ "ifstopped",  0, NULL, 'S'},
+ 	{ "nodeps",     0, NULL, 'D'},
+ 	{ "lockfd",     1, NULL, 'l'},
++	{ "args",       0, NULL, 'a'},
+ 	longopts_COMMON
+ };
+ const char *const longopts_help[] = {
+@@ -80,6 +81,7 @@ const char *const longopts_help[] = {
+ 	"only run commands when stopped",
+ 	"ignore dependencies",
+ 	"fd of the exclusive lock from rc",
++	"service command is followed by args",
+ 	longopts_help_COMMON
+ };
+ const char *usagestring = NULL;
+@@ -1099,6 +1101,24 @@ service_plugable(void)
  	return allow;
  }
  
-+static bool
-+is_command(char *arg)
-+{
-+	if (arg && arg[strlen(arg)-1] == ':')
-+		return true;
-+	return false;
-+}
-+
 +static void
 +arg_append(char **args, char *new_arg)
 +{
@@ -201,20 +214,16 @@ index bb79f42..e27369d 100644
  int main(int argc, char **argv)
  {
  	bool doneone = false;
-@@ -1111,6 +1137,7 @@ int main(int argc, char **argv)
+@@ -1111,6 +1131,8 @@ int main(int argc, char **argv)
  	size_t l = 0, ll;
   	const char *file;
  	struct stat stbuf;
 +	char *rc_args;
++	bool has_args;
  
  	/* Show help if insufficient args */
  	if (argc < 2 || !exists(argv[1])) {
-@@ -1130,10 +1157,12 @@ int main(int argc, char **argv)
- 
- 	atexit(cleanup);
- 
-+	printf("JRG: John was here! :)\n");
-+
+@@ -1133,7 +1155,7 @@ int main(int argc, char **argv)
  	/* We need to work out the real full path to our service.
  	 * This works fine, provided that we ONLY allow multiplexed services
  	 * to exist in the same directory as the master link.
@@ -223,7 +232,17 @@ index bb79f42..e27369d 100644
  	if (!realpath(argv[1], path)) {
  		fprintf(stderr, "realpath: %s\n", strerror(errno));
  		exit(EXIT_FAILURE);
-@@ -1291,10 +1320,24 @@ int main(int argc, char **argv)
+@@ -1252,6 +1274,9 @@ int main(int argc, char **argv)
+ 		case 'Z':
+ 			dry_run = true;
+ 			break;
++		case 'a':
++			has_args = true;
++			break;
+ 		case_RC_COMMON_GETOPT
+ 		}
+ 
+@@ -1291,11 +1316,23 @@ int main(int argc, char **argv)
  	if (runscript)
  		ewarn("%s uses runscript, please convert to openrc-run.", service);
  
@@ -231,43 +250,33 @@ index bb79f42..e27369d 100644
 +	/* Now run each command */
  	retval = EXIT_SUCCESS;
  	while (optind < argc) {
--		optarg = argv[optind++];
-+		optarg = xstrdup(argv[optind++]);
-+
-+		/* Detect command with arguments. */
+ 		optarg = argv[optind++];
+ 
 +		unsetenv("RC_ARGS");
-+		if (is_command(optarg)) {
-+			optarg[strlen(optarg)-1] = '\0'; /* Remove trailing colon. */
++		if (has_args) {
 +			/* Collect arguments and adjust optind accordingly. */
 +			rc_args = NULL;
-+			while (optind < argc && ! is_command(argv[optind]))
++			while (optind < argc)
 +				arg_append(&rc_args, argv[optind++]);
 +			if (rc_args) {
 +				setenv("RC_ARGS", rc_args, 1);
 +				free(rc_args);
 +			}
 +		}
- 
++
  		/* Abort on a sighup here */
  		if (sighup)
-@@ -1410,6 +1453,7 @@ int main(int argc, char **argv)
- 			rc_stringlist_free(restart_services);
- 			restart_services = NULL;
- 		}
-+		free(optarg);
- 
- 		if (!doneone)
- 			usage(EXIT_FAILURE);
+ 			exit (EXIT_FAILURE);
 diff --git a/src/rc/rc-service.c b/src/rc/rc-service.c
-index d0a6499..9bdc87e 100644
+index d0a6499..905f6a3 100644
 --- a/src/rc/rc-service.c
 +++ b/src/rc/rc-service.c
-@@ -29,30 +29,30 @@
+@@ -29,30 +29,33 @@
  
  const char *applet = NULL;
  const char *extraopts = NULL;
 -const char *getoptstring = "e:ilr:IN" getoptstring_COMMON;
-+const char *getoptstring = "+iINe:r:l" getoptstring_COMMON;
++const char *getoptstring = "+iINae:r:l" getoptstring_COMMON;
  const struct option longopts[] = {
 -	{ "exists",   1, NULL, 'e' },
 -	{ "ifexists", 0, NULL, 'i' },
@@ -277,6 +286,7 @@ index d0a6499..9bdc87e 100644
  	{ "ifnotstarted", 0, NULL, 'N' },
 -	{ "list",     0, NULL, 'l' },
 -	{ "resolve",  1, NULL, 'r' },
++	{ "args",         0, NULL, 'a' },
 +	{ "exists",       1, NULL, 'e' },
 +	{ "resolve",      1, NULL, 'r' },
 +	{ "list",         0, NULL, 'l' },
@@ -284,13 +294,18 @@ index d0a6499..9bdc87e 100644
  };
  const char * const longopts_help[] = {
 -	"tests if the service exists or not",
- 	"if the service exists then run the command",
- 	"if the service is inactive then run the command",
- 	"if the service is not started then run the command",
+-	"if the service exists then run the command",
+-	"if the service is inactive then run the command",
+-	"if the service is not started then run the command",
 -	"list all available services",
-+	"tests if the service exists or not",
- 	"resolve the service name to an init script",
-+	"list all available services",
+-	"resolve the service name to an init script",
++	"If the service exists then run the command",
++	"If the service is inactive then run the command",
++	"If the service is not started then run the command",
++	"Service command is followed by args",
++	"Tests if the service exists or not",
++	"Resolve the service name to an init script",
++	"List all available services",
  	longopts_help_COMMON
  };
 -const char *usagestring = ""							\
@@ -299,10 +314,40 @@ index d0a6499..9bdc87e 100644
 -	"   or: rc-service [options] -l\n"				\
 -	"   or: rc-service [options] -r <service>";
 +const char *usagestring = ""
-+	"Usage: rc-service [options] [-i|-I|-N] <service> [<cmd>...] [<cmd>: [<arg>...]...]\n"
++	"Usage: rc-service [options] [-i|-I|-N] <service> [<cmd>...]\n"
++	"   or: rc-service [options] [-i|-I|-N] -a <service> [<cmd> [<arg>...]]\n"
 +	"   or: rc-service [options] -e <service>\n"
 +	"   or: rc-service [options] -r <service>\n"
 +	"   or: rc-service [options] -l\n";
  
  int main(int argc, char **argv)
  {
+@@ -64,6 +67,7 @@ int main(int argc, char **argv)
+ 	bool if_exists = false;
+ 	bool if_inactive = false;
+ 	bool if_notstarted = false;
++	bool has_args = false;
+ 
+ 	applet = basename_c(argv[0]);
+ 	/* Ensure that we are only quiet when explicitly told to be */
+@@ -106,6 +110,9 @@ int main(int argc, char **argv)
+ 			free(service);
+ 			return EXIT_SUCCESS;
+ 			/* NOTREACHED */
++		case 'a':
++			has_args = true;
++			break;
+ 
+ 		case_RC_COMMON_GETOPT
+ 		}
+@@ -125,6 +132,10 @@ int main(int argc, char **argv)
+ 		return 0;
+ 	if (if_notstarted && (state & RC_SERVICE_STARTED))
+ 		return 0;
++	if (has_args) {
++		*argv-- = "-a";
++		argc++;
++	}
+ 	*argv = service;
+ 	execv(*argv, argv);
+ 	eerrorx("%s: %s", applet, strerror(errno));

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>john_r_graham@gentoo.org</email>
+		<name>John R. Graham</name>
+	</maintainer>
+	<use>
+		<flag name="netifrc">enable Gentoo's network stack (net.* scripts)</flag>
+		<flag name="newnet">enable the new network stack (experimental)</flag>
+		<flag name="tools">build optional tools</flag>
+		<flag name="cli-args-colon">Support extra arguments to the init script on the command line: colon syntax.</flag>
+		<flag name="cli-args-ddash">Support extra arguments to the init script on the command line: double dash syntax.</flag>
+		<flag name="cli-args-dasha">Support extra arguments to the init script on the command line: -a syntax.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">openrc/openrc</remote-id>
+	</upstream>
+</pkgmetadata>
