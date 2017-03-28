@@ -60,4 +60,7 @@ pkg_postinst() {
 	elog "Starting with version 10.1.8, MariaDB includes an improved systemd unit named mariadb.service"
 	elog "You should prefer that unit over this package's mysqld.service."
 	einfo ""
+
+	einfo "JRG: Added support for extra daemon command line arguments delivered to the init script start"
+	einfo "command by the experimental openrc-0.23.2_p1."
 }
