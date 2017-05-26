@@ -14,19 +14,19 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 MY_PV=$(get_version_component_range 1-3 ${PV})
 P=${PN}-${MY_PV}
 S=${WORKDIR}/${P}
-SRC_URI="http://dev.gentoo.org/~fuzzyray/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/gentoolkit/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 PATCHES=( "${FILESDIR}"/${PV}-depgraph-satisfies.patch )
 
 DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
-	!<=app-portage/gentoolkit-dev-0.2.7
+	!app-portage/gentoolkit-dev
 	sys-apps/gawk
 	sys-apps/gentoo-functions"
 
@@ -35,7 +35,6 @@ python_prepare_all() {
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
-
 }
 
 python_install_all() {
@@ -56,6 +55,12 @@ pkg_postinst() {
 	# Create cache directory for revdep-rebuild
 	mkdir -p -m 0755 "${EROOT%/}"/var/cache
 	mkdir -p -m 0700 "${EROOT%/}"/var/cache/revdep-rebuild
+
+	einfo "Starting with this version, ebump, ekeyword and imlate are now"
+	einfo "part of the gentoolkit package."
+	einfo "The gentoolkit-dev package is now deprecated in favor of a single"
+	einfo "gentoolkit package.   The remaining tools from gentoolkit-dev"
+	einfo "are now obsolete/unused with the git based tree."
 
 	# Only show the elog information on a new install
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
