@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -16,11 +15,12 @@ if [[ ${PV} == "9999" ]]; then
 	MY_PV=${PV}
 else
 	MY_PV=$(get_version_component_range 1-3 ${PV})
-	S=${WORKDIR}/${PN}-${MY_PV}
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	P=${PN}-${MY_PV}
+	S=${WORKDIR}/${P}
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
 fi
 
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="audit debug ncurses pam newnet prefix +netifrc selinux static-libs
@@ -73,9 +73,9 @@ src_prepare() {
 		sed -i "/^GITVER[[:space:]]*=/s:=.*:=${ver}:" mk/gitver.mk || die
 	fi
 
-	use cli-args-colon && epatch "${FILESDIR}/${P}-cmd-args-colon.patch"
-	use cli-args-ddash && epatch "${FILESDIR}/${P}-cmd-args-ddash.patch"
-	use cli-args-dasha && epatch "${FILESDIR}/${P}-cmd-args-dasha.patch"
+	use cli-args-colon && epatch "${FILESDIR}/${P}-cli-args-colon.patch"
+	use cli-args-ddash && epatch "${FILESDIR}/${P}-cli-args-ddash.patch"
+	use cli-args-dasha && epatch "${FILESDIR}/${P}-cli-args-dasha.patch"
 
 	# Allow user patches to be applied without modifying the ebuild
 	eapply_user
