@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Open Source ASN.1 Compiler
+EAPI=0
+HOMEPAGE=http://asn1c.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=http://lionet.info/soft/asn1c-0.9.28.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=f962acac335683428295500655f9ed83
