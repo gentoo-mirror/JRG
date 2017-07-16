@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer><email>maintainer-wanted@gentoo.org</email></maintainer>
+  <maintainer type="person"><email>john_r_graham@gentoo.org</email></maintainer>
   <longdescription>
 	The asn1c is a free, open source compiler of ASN.1 specifications
 	into C source code. It supports a range of ASN.1 syntaxes, including
