@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+	<email>john_r_graham@gentoo.org</email>
+	<description>Primary maintainer</description>
+  </maintainer>
+  <longdescription>This is a major mode for editing ASN.1/GDMO files.</longdescription>
+  <use></use>
+</pkgmetadata>

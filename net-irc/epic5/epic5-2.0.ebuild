@@ -43,6 +43,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Bug 426262: autotools eclasses should rename configure.in to configure.ac internally (automake-1.14 compatibility)
+	if [ -e configure.in ] ; then
+		mv configure.in configure.ac
+	fi
 	eautoconf
 }
 
