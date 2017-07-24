@@ -28,12 +28,6 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE=""
+RDEPEND="app-emacs/s"
 
-SITEFILE="50${PN}.el"
-
-src_prepare() {
-	default
-
-	ewarn "S is ${S}"
-	mv asn1-mode.el $SITEFILE
-}
+SITEFILE="50${PN}-gentoo.el"
