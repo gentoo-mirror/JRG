@@ -1,0 +1,11 @@
+diff -ubB old/dumpasn1.c new/dumpasn1.c
+--- old/dumpasn1.c	2017-08-03 18:18:13.802025895 -0400
++++ new/dumpasn1.c	2017-08-03 18:21:14.929761487 -0400
+@@ -409,6 +409,7 @@
+ 
+ static const char *configPaths[] = {
+ 	/* General environment-based paths */
++	"/usr/share/dumpasn1/",
+ 	"$DUMPASN1_PATH/",
+ 
+ 	NULL
