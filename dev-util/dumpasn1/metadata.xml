@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>ejohn_r_graham@gentoo.org</email>
-	<description>Primary maintainer</description>
+	<email>john_r_graham@gentoo.org</email>
+	<description>John R. Graham</description>
 </maintainer>
-<longdescription>Long description of the package</longdescription>
+<longdescription>An ASN.1 object dump program that will dump data encoded using any of the ASN.1 encoding rules in a variety of user-specified formats.</longdescription>
 <use>
 </use>
 </pkgmetadata>
