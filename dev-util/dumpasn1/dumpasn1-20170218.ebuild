@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Peter Gutmann's ASN.1 dump utility"
 HOMEPAGE="https://www.cs.auckland.ac.nz/~pgut001/"
-SRC_URI="mirror://gentoo/dumpasn1-${PV}.tar.bz"
+SRC_URI="mirror://gentoo/dumpasn1-${PV}.tar.xz"
 
 # This isn't quite right. Fix this.
 LICENSE="WTFPL-2"
