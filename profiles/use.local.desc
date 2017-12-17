@@ -2,11 +2,3 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-net-irc/epic5:archive - Use app-arch/libarchive to use zip and tar archives from scripts.
-net-irc/epic5:valgrind - Compile against dev-util/valgrind headers to improve memory-leak checking when running epic5 under valgrind.
-sys-apps/openrc:cli-args-colon - Support extra arguments to the init script on the command line: colon syntax.
-sys-apps/openrc:cli-args-dasha - Support extra arguments to the init script on the command line: -a syntax.
-sys-apps/openrc:cli-args-ddash - Support extra arguments to the init script on the command line: double dash syntax.
-sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
-sys-apps/openrc:newnet - enable the new network stack (experimental)
-sys-apps/openrc:tools - build optional tools
