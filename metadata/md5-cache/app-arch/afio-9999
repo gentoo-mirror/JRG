@@ -6,4 +6,4 @@ HOMEPAGE=http://members.chello.nl/k.holtman/afio.html https://github.com/kholtma
 LICENSE=Artistic LGPL-2
 SLOT=0
 _eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=4cfc0778a45d1c654cc2190c0f50c6c5
+_md5_=b409548234e21b48bf39694306576558
