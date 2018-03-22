@@ -1,0 +1,22 @@
+diff --git a/afio.h b/afio.h
+index 79ed760..51b79be 100644
+--- a/afio.h
++++ b/afio.h
+@@ -446,7 +446,7 @@ int openotty (char *, Stat *, Link *, int, int);
+ int openqtty (void);
+ int options (int, char **, char *);
+ VOIDFN out (char **);
+-void outalloc (uint);
++void outalloc (reg size_t);
+ size_t outavail (char **);
+ int outdata (int, char*, off_t);
+ 
+@@ -497,7 +497,7 @@ VOIDFN (*signal ())();
+      int xwait (int, char *, int);
+      void mail(char *who,int vol,char *archive);
+ 
+-int writeall(int, const char*, unsigned int);
++int writeall(int, const char*, size_t);
+ int incheckentry(char *, Stat *);
+ int incheckdata (int fd, off_t size, char *name, Stat *asb, int comp);
+ Link * linkinode16 (dev_t dev, ino_t ino);

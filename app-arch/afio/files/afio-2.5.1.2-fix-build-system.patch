@@ -1,0 +1,31 @@
+diff -ubBr a/Makefile b/Makefile
+--- a/Makefile	2018-03-22 12:02:21.127859729 -0400
++++ b/Makefile	2018-03-22 11:19:46.172801063 -0400
+@@ -68,22 +68,17 @@
+ LARGEFILEFLAGS=-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+ 
+ # even more warnings flags..
+-MW=
++MW=-Wformat -Werror=format-security -Wall
+ #MW=-Wtraditional -Wcast-qual -Wcast-align -Wconversion -pedantic -Wlong-long -Wimplicit -Wuninitialized -W -Wshadow -Wsign-compare -Wstrict-prototypes -Wmissing-declarations
+ 
+-CFLAGS1 = -Wall -Wstrict-prototypes -s -O2 -fomit-frame-pointer $(LARGEFILEFLAGS) $(MW)
+-
+-CC=gcc
+-
+ # also using contents of usin CPPFLAGS, CFLAGS, LDFLAGS out of environment
+ # variables, if they exist
+-CFLAGS += $(CFLAGS1) $1 $2 $3 $4 $5 $6 $7 $8 $9 $a $b $c $d $e $(e2) $f $g $I
+-LDFLAGS +=
+-CPPFLAGS +=
++CFLAGS += -Wall -Wstrict-prototypes -Wno-unused-result $(LARGEFILEFLAGS) $(MW) $1 $2 $3 $4 $5 $6 $7 $8 $9 $a $b $c $d $e $(e2) $f $g $I
++CPPFLAGS += ${LARGEFILEFLAGS} $(MW) ${2} ${3} ${6} ${8} ${c} ${d} ${e2} ${f} ${g}
++CC ?= gcc
+ 
+ afio : afio.o compfile.o exten.o match.o $M
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) \
+-	afio.o compfile.o exten.o match.o $M -o afio
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+ 
+ clean:
+ 	rm -f *.o afio
