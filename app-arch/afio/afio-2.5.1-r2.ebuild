@@ -45,7 +45,7 @@ src_unpack() {
 	case "${PV}" in
 		9999|9998|2.5.1.2)
 			git-r3_fetch ${EGIT_REPO_URI} ${REFS} ${TAG}
-			git-r3_checkout ${EGIT_REPO_URI} ${WORKDIR}/${P} ${TAG}
+			git-r3_checkout ${EGIT_REPO_URI} "${WORKDIR}/${P}" ${TAG}
 			;;
 		*)
 			default_src_unpack
