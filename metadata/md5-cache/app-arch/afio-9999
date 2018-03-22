@@ -1,0 +1,9 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Afio creates cpio-format archives.
+EAPI=6
+HOMEPAGE=http://members.chello.nl/k.holtman/afio.html https://github.com/kholtman/afio
+LICENSE=Artistic LGPL-2
+SLOT=0
+_eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=4cfc0778a45d1c654cc2190c0f50c6c5
