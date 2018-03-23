@@ -18,7 +18,7 @@ case "${PV}" in
 		EGIT_REPO_URI="git@github.com:kholtman/afio.git"
 		PATCHES=( "${FILESDIR}"/${PN}-9999-fix-build-system.patch )
 		;;
-	# Local default path research branch.
+	# Local research branch.
 	9998)
 		EGIT_REPO_URI="file:///home/johngrah/Projects/Gentoo/afio/"
 		REFS="refs/heads/control-file-warning-fix"
@@ -37,7 +37,9 @@ case "${PV}" in
 	*)
 		SRC_URI="http://members.chello.nl/k.holtman/${P}.tgz"
 		KEYWORDS="alpha amd64 ~hppa ppc sparc x86"
-		PATCHES=( "${FILESDIR}"/${PN}-2.5.1-fix-build-system.patch )
+		PATCHES=( "${FILESDIR}"/${PN}-2.5.1-fix-build-system.patch
+				  "${FILESDIR}"/${PN}-2.5.1-control-file-warning-fix.patch
+				)
 		;;
 esac
 
