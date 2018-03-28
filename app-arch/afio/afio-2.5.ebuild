@@ -48,7 +48,7 @@ src_unpack() {
 			git-r3_checkout ${EGIT_REPO_URI} "${WORKDIR}/${P}" ${TAG}
 			;;
 		*)
-			default_src_unpack
+			default
 			;;
 	esac
 }
