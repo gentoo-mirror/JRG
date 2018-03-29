@@ -33,7 +33,7 @@ case "${PV}" in
 				  "${FILESDIR}"/${P}-compile-errors.patch
 				)
 		;;
-	# Normal upstream tarball releases.
+	# Normal Gentoo releases.
 	*)
 		SRC_URI="http://members.chello.nl/k.holtman/${P}.tgz"
 		KEYWORDS="alpha amd64 ~hppa ppc sparc x86"
