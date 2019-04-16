@@ -1,4 +1,0 @@
-I just fixed a bug in app-arch/afio that was causing app-backup/flexbackup to mess up its tape backups so I thought I would publish an ebuild that fully illustrates the technique but which I didn't feel the need to anonymize (because it's an in-tree ebuild in the first place). This ebuild simultaneously supports[list][*]Live build of upstream Git HEAD of master through version 9999.
-[*]Live build of local clone of a personal feature branch through version 9998.
-[*]Live build of upstream tagged Git releases through their associated tags.
-[*]Upstream released tarballs.[/list]Here's the source (also available on [url=https://github.com/john-r-graham/jrg-overlay]my overlay[/url]):
