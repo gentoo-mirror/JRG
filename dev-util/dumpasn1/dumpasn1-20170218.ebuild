@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,8 +14,7 @@ LICENSE="WTFPL-2"
 
 SLOT="0"
 
-KEYWORDS="~x86 ~amd64"
-RDEPEND="${DEPEND}"
+KEYWORDS="~amd64 ~x86"
 S=${WORKDIR}
 
 src_prepare() {
@@ -24,7 +23,7 @@ src_prepare() {
 }
 
 src_compile() {
-	gcc dumpasn1.c -o dumpasn1
+	gcc ${CFLAGS} dumpasn1.c -o dumpasn1
 }
 
 src_install() {

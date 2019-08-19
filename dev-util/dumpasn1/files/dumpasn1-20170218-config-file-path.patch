@@ -1,11 +1,13 @@
 diff -ubB old/dumpasn1.c new/dumpasn1.c
---- old/dumpasn1.c	2017-08-03 18:18:13.802025895 -0400
-+++ new/dumpasn1.c	2017-08-03 18:21:14.929761487 -0400
-@@ -409,6 +409,7 @@
- 
+--- old/dumpasn1.c	2019-02-22 13:42:49.237676288 -0500
++++ new/dumpasn1.c	2019-02-22 13:45:11.271730776 -0500
+@@ -419,7 +419,8 @@
  static const char *configPaths[] = {
- 	/* General environment-based paths */
+   #ifndef DEBIAN
+ 	/* Unix absolute paths */
+-	"/usr/bin/", "/usr/local/bin/", "/etc/dumpasn1/",
++	"/etc/dumpasn1/",
 +	"/usr/share/dumpasn1/",
- 	"$DUMPASN1_PATH/",
  
- 	NULL
+ 	/* Unix environment-based paths */
+ 	"$HOME/", "$HOME/bin/",
