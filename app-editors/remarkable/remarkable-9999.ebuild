@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 case "${PV}" in
 	# Head of master branch. This is a Gentoo convention.
 	9999)
-		EGIT_REPO_URI="git@github.com:jamiemcg/Remarkable.git"
+		EGIT_REPO_URI="https://github.com/jamiemcg/Remarkable.git"
 		;;
 	# Normal upstream tarball releases.
 	*)
