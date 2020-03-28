@@ -1,4 +1,5 @@
 app-arch/afio 2.5 2.5.1.2 9999: Afio creates cpio-format archives.
+app-editors/remarkable 9999: A Fully Featured Markdown Editor
 app-emacs/asn1-mode 0.1 9999: ASN.1/GDMO mode for GNU Emacs
 app-portage/gentoolkit 0.3.3_p1 0.4.0_p1: Collection of administration scripts for Gentoo
 dev-db/mysql-init-scripts 2.1_p1-r1: Gentoo MySQL init scripts.
