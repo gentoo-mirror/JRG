@@ -3,12 +3,12 @@ DEFINED_PHASES=install prepare setup unpack
 DESCRIPTION=A Fully Featured Markdown Editor
 EAPI=7
 HOMEPAGE=https://remarkableapp.github.io/index.html
-IUSE=python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
+IUSE=+python_single_target_python3_6
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=MIT
 PROPERTIES=live
-RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) x11-libs/gtksourceview:3.0 net-libs/webkit-gtk dev-python/beautifulsoup
-REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) x11-libs/gtksourceview:3.0 net-libs/webkit-gtk dev-python/beautifulsoup
+REQUIRED_USE=^^ ( python_single_target_python3_6 )
 SLOT=0
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	98584e405e2b0264d37e8f728327fed1	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	bae936266b68e0c374a74f2b0d0aaa44	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=ef1fb8a29fd0cc2e96c1eabf3fc4983e
+_md5_=6137c0721f17453697e8ee07541ac9d2
