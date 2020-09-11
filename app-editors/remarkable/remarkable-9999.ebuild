@@ -19,7 +19,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	x11-libs/gtksourceview:3.0
 	net-libs/webkit-gtk
-	dev-python/beautifulsoup
+	$(python_gen_cond_dep '
+		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/pygobject[${PYTHON_USEDEP}]
+	')
 "
 
 # JRG: Special version numbers to access specific branches.
