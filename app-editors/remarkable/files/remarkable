@@ -1,3 +1,0 @@
-#!/bin/bash
-foldername=PYTHON_SITEDIR/remarkable
-PYTHONPATH=$foldername/remarkable:$foldername/remarkable_lib exec $foldername/bin/remarkable "$@"
