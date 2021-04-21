@@ -1,2 +1,3 @@
-# jrg-overlay
-John's Collaboration Overlay
+# John's Collaboration Overlay
+
+This overlay is available in Gentoo layman as "JRG".
