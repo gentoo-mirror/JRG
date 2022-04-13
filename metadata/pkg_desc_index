@@ -1,5 +1,6 @@
 app-arch/afio 2.5 2.5.1.2 9999: Afio creates cpio-format archives.
 app-emacs/asn1-mode 0.1 9999: ASN.1/GDMO mode for GNU Emacs
+app-misc/freeplane-bin 1.9.12: Java application for Mind Mapping, Knowledge and Project Management
 dev-db/mysql-init-scripts 2.1_p1-r1: Gentoo MySQL init scripts.
 dev-libs/argtable 2.13-r10: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-util/asn1c 0.9.21 0.9.28: Open Source ASN.1 Compiler
