@@ -8,3 +8,4 @@ sys-apps/openrc:cli-args-ddash - Support extra arguments to the init script on t
 sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
 sys-apps/openrc:newnet - enable the new network stack (experimental)
 sys-apps/openrc:tools - build optional tools
+sys-fs/squashfs-tools:xz - Add xz compression support.
