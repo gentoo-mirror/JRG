@@ -1,0 +1,12 @@
+BDEPEND=>=app-editors/emacs-23.1:* >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=ASN.1/GDMO mode for GNU Emacs
+EAPI=7
+HOMEPAGE=https://github.com/kawabata/asn1-mode
+INHERIT=elisp git-r3
+LICENSE=GPL-3+
+PROPERTIES=live
+RDEPEND=app-emacs/s >=app-editors/emacs-23.1:*
+SLOT=0
+_eclasses_=elisp-common	79f8e13c80c89792e5c9b3fc8ef59f3b	elisp	8aab2c847b5894dc40503ae1d203abcf	git-r3	2347f8fe2d392b2a091191f94be37e6f
+_md5_=efb1e66c4a0b429eb69f256e40ca6221
