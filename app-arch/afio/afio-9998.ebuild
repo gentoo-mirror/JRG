@@ -22,8 +22,8 @@ case "${PV}" in
 	# Local default path research branch.
 	9998)
 		EGIT_REPO_URI="file:///home/johngrah/Projects/Gentoo/afio/"
-		REFS="refs/heads/control-file-warning-fix"
-		KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+		REFS="refs/heads/warnings-experimentation"
+		# KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 		PATCHES=( "${FILESDIR}"/${PN}-9999-fix-build-system.patch )
 		;;
 	# Tagged but not released upstream version.

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,12 +16,14 @@ case "${PV}" in
 	# Head of master branch. This is a Gentoo convention.
 	9999)
 		EGIT_REPO_URI="git@github.com:kholtman/afio.git"
+		KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 		PATCHES=( "${FILESDIR}"/${PN}-9999-fix-build-system.patch )
 		;;
 	# Local default path research branch.
 	9998)
 		EGIT_REPO_URI="file:///home/johngrah/Projects/Gentoo/afio/"
 		REFS="refs/heads/control-file-warning-fix"
+		KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 		PATCHES=( "${FILESDIR}"/${PN}-9999-fix-build-system.patch )
 		;;
 	# Tagged but not released upstream version.
@@ -29,6 +31,7 @@ case "${PV}" in
 		EGIT_REPO_URI="git@github.com:kholtman/afio.git"
 		TAG="v2.5.1-2"
 		REFS="refs/tags/${TAG}"
+		KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 		PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch
 				  "${FILESDIR}"/${P}-compile-errors.patch
 				)
