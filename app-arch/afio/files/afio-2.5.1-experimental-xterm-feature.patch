@@ -1,0 +1,91 @@
+diff -ubB old/afio.c new/afio.c
+--- old/afio.c	2023-07-15 12:53:11.383998146 -0400
++++ new/afio.c	2023-07-16 22:05:19.294230422 -0400
+@@ -231,6 +231,8 @@
+ #endif
+ #endif /* major */
+ 
++#define XTERM_CLEAR_LINE "\x1B[0K"
++
+ #include "afio.h"
+ 
+ 
+@@ -266,6 +268,7 @@
+      STATIC short zflag;	/* Print final statistics */
+      STATIC short flag0;	/* Input names terminated with '\0' */
+      STATIC short Jflag=0;	/* Keep going after archive write error */
++     STATIC short Nflag=0;      /* JRG Experimental. Do XTerm formatting tricks to improve the interaction with mbuffer reporting. */
+      STATIC short hidequit;	/* show the quit option? */
+      STATIC short abspaths;	/* allow absolute path names? */
+      STATIC uint arbsize = BLOCK;	/* Archive block size */
+@@ -358,7 +361,7 @@
+    */
+ 
+   while ((c = options (ac, av, 
+-         "aioprtIOVCb:c:de:fghjklmns:uvxXy:Y:zFKZL:R:qAE:G:M:w:W:T:SBD:P:Q:U4JH:0@:N:3:1:92:56:7"))
++         "aioprtIOVCb:c:de:fghjklmns:uvxXy:Y:zFKZL:R:qAE:G:M:w:W:T:SBD:P:Q:U4JH:0@:N3:1:92:56:7"))
+         )
+     {
+       switch (c)
+@@ -476,6 +479,9 @@
+ 	case 'v':
+ 	  ++vflag;
+ 	  break;
++	case 'N': /* JRG Experimental. X-Term sequences for mbuffer interaction. */
++	  ++Nflag;
++	  break;
+ 	case 'x':
+ 	  xflag = 1;
+ 	  break;
+@@ -1201,14 +1207,17 @@
+ 	  else
+ 	    if (vflag)
+ 	      {
++		const char * control_seq = (Nflag) ?  XTERM_CLEAR_LINE : "";
++		
+ 		  /* we cast to double and print as floating point because
+ 		     %Lu printing is buggy above 4G (at least with my C library). */
+-		  if(printbytepos) fprintf(stderr,"%.0f ",(double)bytepos);
++		if(Nflag) fprintf(stderr, "\r");
++		if(printbytepos) fprintf(stderr,"%.0f ", (double)bytepos);
+ 		  
+-		  if (*uncompto)
+-		    res = fprintf (stderr, "%s -- uncompressed\n", uncompto);
++		if(*uncompto)
++		  res = fprintf (stderr, "%s -- uncompressed%s\n", uncompto, control_seq);
+ 		  else
+-		    res = fprintf (stderr, "%s -- okay\n", name);
++		  res = fprintf (stderr, "%s -- okay%s\n", name, control_seq);
+ 		  
+ 		  /* check for broken pipe on stderr */
+ 		  if(res<0) {
+@@ -3705,7 +3714,10 @@
+ 	} 
+ 	else if (vflag)
+ 	  {
+-	    if(printbytepos) fprintf(stderr,"%.0f ",(double)bytepos);
++	    char * control_seq = (Nflag) ? XTERM_CLEAR_LINE : "";
++	    
++	    if(Nflag) fprintf(stderr, "\r");
++	    if(printbytepos) fprintf(stderr, "%.0f ", (double)bytepos);
+ 	    
+ 	    if ((name[0] == '/') && !abspaths && (name[1]!=0))
+ 		fprintf (stderr, "%s -- ", &name[1]); 
+@@ -3717,9 +3729,9 @@
+ 	       */
+ 
+ 	    if ((fd==ZIPFD)||(fd==MEMFD))
+-		VOID fprintf (stderr, "(%02d%%)\n", compression);
++	      VOID fprintf (stderr, "(%02d%%)%s\n", compression, control_seq);
+ 	    else
+-		VOID fputs ("okay\n", stderr);
++	      VOID fprintf(stderr, "okay%s\n", control_seq);
+ 	}
+ 	
+ 	/* ASX check if file changed between the begining 
+Only in new/: afio.c~
+Common subdirectories: old/regtest and new/regtest
+Common subdirectories: old/script1 and new/script1
+Common subdirectories: old/script2 and new/script2
+Common subdirectories: old/script3 and new/script3
+Common subdirectories: old/script4 and new/script4
