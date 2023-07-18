@@ -11,11 +11,11 @@ HOMEPAGE="http://members.chello.nl/k.holtman/afio.html https://github.com/kholtm
 LICENSE="Artistic LGPL-2"
 SLOT="0"
 
-# JRG: Special version numbers to access specific branches.
+# JRG: Special version numbers to access specific branches or patch sets.
 case "${PV}" in
 	# Head of master branch. This is a Gentoo convention.
 	9999)
-		EGIT_REPO_URI="git@github.com:kholtman/afio.git"
+		EGIT_REPO_URI="https://github.com/kholtman/afio.git"
 		KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 		PATCHES=( "${FILESDIR}"/${PN}-9999-fix-build-system.patch )
 		;;
@@ -23,8 +23,18 @@ case "${PV}" in
 	9998)
 		EGIT_REPO_URI="file:///home/jgraham/Projects/Gentoo/afio/"
 		REFS="refs/heads/warnings-experimentation"
-		# KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+		KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 		PATCHES=( "${FILESDIR}"/${PN}-9999-fix-build-system.patch )
+		;;
+	# Additional research branch, applies more patches to the head of the master branch.
+	# In particular, the mbuffer screen interaction patch Im experimenting with.
+	9997)
+		EGIT_REPO_URI="https://github.com/kholtman/afio.git"
+		KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+		PATCHES=( "${FILESDIR}"/${PN}-9999-fix-build-system.patch
+				  "${FILESDIR}"/${PN}-9999-mbuffer-interaction.patch
+				)
+		# S="${WORKDIR}/${PN}"
 		;;
 	# Tagged but not released upstream version.
 	2.5.1.2)
@@ -46,7 +56,7 @@ esac
 
 src_unpack() {
 	case "${PV}" in
-		9999|9998|2.5.1.2)
+		9999|9998|9997|2.5.1.2)
 			git-r3_fetch ${EGIT_REPO_URI} ${REFS} ${TAG}
 			git-r3_checkout ${EGIT_REPO_URI} "${WORKDIR}/${P}" ${TAG}
 			;;
