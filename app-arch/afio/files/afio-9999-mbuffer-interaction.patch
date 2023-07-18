@@ -1,5 +1,5 @@
 diff --git a/afio.c b/afio.c
-index 048f9b6..6291275 100644
+index 048f9b6..0b7f85b 100644
 --- a/afio.c
 +++ b/afio.c
 @@ -228,6 +228,8 @@ extern char *sys_errlist[];
@@ -28,7 +28,17 @@ index 048f9b6..6291275 100644
          )
      {
        switch (c)
-@@ -1249,20 +1252,23 @@ in (av)
+@@ -456,6 +459,9 @@ int main (int ac, char **av)
+ 	case 'n':
+ 	  ++nflag;
+ 	  break;
++	case 'N':
++	  ++Nflag;
++	  break;
+ 	case 's':
+ 	  sflagused = 1;
+ 	  /* Do a 'dry run' to check all values for syntax errors */
+@@ -1249,20 +1255,23 @@ in (av)
  	  else
  	    if (vflag)
  	      {
@@ -66,7 +76,7 @@ index 048f9b6..6291275 100644
  	      }
  	}
      }
-@@ -3862,6 +3868,9 @@ out (av)
+@@ -3862,6 +3871,9 @@ out (av)
  	}
  	else if (vflag)
  	  {
@@ -76,7 +86,7 @@ index 048f9b6..6291275 100644
  	    if(printbytepos) fprintf(stderr,"%.0f ",(double)bytepos);
  
  	    if ((name[0] == '/') && !abspaths && (name[1]!=0))
-@@ -3874,9 +3883,9 @@ out (av)
+@@ -3874,9 +3886,9 @@ out (av)
  	       */
  
  	    if ((fd==ZIPFD)||(fd==MEMFD))
