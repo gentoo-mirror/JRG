@@ -6,5 +6,4 @@ dev-libs/argtable 2.13-r10: An ANSI C library for parsing GNU-style command-line
 dev-util/asn1c 0.9.21 0.9.28: Open Source ASN.1 Compiler
 dev-util/dumpasn1 20170218: Peter Gutmann's ASN.1 dump utility
 sys-apps/dtc 1.4.1: Open Firmware device tree compiler
-sys-apps/openrc 0.23.2_p1: OpenRC manages the services, startup and shutdown of a host
 sys-fs/squashfs-tools 4.5.1-r1: tools to create and extract Squashfs filesystems
