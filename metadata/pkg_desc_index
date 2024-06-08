@@ -4,6 +4,5 @@ app-misc/freeplane-bin 1.9.12: Java application for Mind Mapping, Knowledge and 
 dev-db/mysql-init-scripts 2.1_p1-r1: Gentoo MySQL init scripts.
 dev-libs/argtable 2.13-r10: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-util/asn1c 0.9.21 0.9.28: Open Source ASN.1 Compiler
-dev-util/dumpasn1 20170218: Peter Gutmann's ASN.1 dump utility
 sys-apps/dtc 1.4.1: Open Firmware device tree compiler
 sys-fs/squashfs-tools 4.5.1-r1: tools to create and extract Squashfs filesystems
