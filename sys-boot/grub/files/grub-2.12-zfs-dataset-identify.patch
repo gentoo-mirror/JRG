@@ -1,0 +1,12 @@
+diff '--color=auto' -ubBr a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+--- a/util/grub.d/10_linux.in	2024-06-25 10:32:20.983299937 -0400
++++ b/util/grub.d/10_linux.in	2024-06-25 11:05:55.966558473 -0400
+@@ -73,7 +73,7 @@
+ 	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
+ 	fi;;
+     xzfs)
+-	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
++	rpool=`blkid ${GRUB_DEVICE} --output export | awk -F= '/^LABEL=/ { print $2; exit }'`
+ 	bootfs="`make_system_path_relative_to_its_root / | sed -e "s,@$,,"`"
+ 	LINUX_ROOT_DEVICE="ZFS=${rpool}${bootfs%/}"
+ 	;;
