@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic pam toolchain-funcs versionator
+inherit flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
@@ -14,10 +14,10 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	MY_PV=${PV}
 else
-	MY_PV=$(get_version_component_range 1-3 ${PV})
-	P=${PN}-${MY_PV}
-	S=${WORKDIR}/${P}
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
+	MY_PV=$(ver_cut 1-3)
+	MY_P=${PN}-${MY_PV}
+	S=${WORKDIR}/${MY_P}
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_P}.tar.gz"
 fi
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
