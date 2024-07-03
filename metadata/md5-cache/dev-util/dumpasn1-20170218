@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Peter Gutmann's ASN.1 dump utility
+EAPI=7
+HOMEPAGE=https://www.cs.auckland.ac.nz/~pgut001/
+KEYWORDS=~amd64 ~x86
+LICENSE=WTFPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/dumpasn1-20170218.tar.xz
+_md5_=9b0654f3ed3b5a69fda88cef626c4a9c
