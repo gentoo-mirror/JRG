@@ -1,9 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Peter Gutmann's ASN.1 dump utility"
 HOMEPAGE="https://www.cs.auckland.ac.nz/~pgut001/"
@@ -18,7 +16,9 @@ KEYWORDS="~amd64 ~x86"
 S=${WORKDIR}
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-config-file-path.patch"
+	local PATCHES=(
+		"${FILESDIR}"/dumpasn1-20170218-config-file-path.patch
+	)
 	default
 }
 
