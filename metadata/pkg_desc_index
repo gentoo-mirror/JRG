@@ -1,4 +1,3 @@
-app-arch/afio 2.5 2.5.1.2 9997 9998 9999: Afio creates cpio-format archives.
 app-emacs/asn1-mode 0.1 9999: ASN.1/GDMO mode for GNU Emacs
 app-misc/freeplane-bin 1.9.12: Java application for Mind Mapping, Knowledge and Project Management
 dev-db/mysql-init-scripts 2.1_p1-r1: Gentoo MySQL init scripts.
