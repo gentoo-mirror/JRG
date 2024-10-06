@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs git-r3
 
@@ -38,7 +38,7 @@ case "${PV}" in
 		;;
 	# Tagged but not released upstream version.
 	2.5.1.2)
-		EGIT_REPO_URI="git@github.com:kholtman/afio.git"
+		EGIT_REPO_URI="https://github.com/kholtman/afio.git"
 		TAG="v2.5.1-2"
 		REFS="refs/tags/${TAG}"
 		KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
