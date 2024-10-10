@@ -1,0 +1,16 @@
+diff -ubB old-20100526/mbuffer.c new-20100526/mbuffer.c
+--- old-20100526/mbuffer.c	2010-06-06 08:01:29.000000000 -0400
++++ new-20100526/mbuffer.c	2010-06-06 08:31:40.000000000 -0400
+@@ -2052,6 +2052,12 @@
+ 	}
+ 	err = pthread_create(&dest->thread,0,&outputThread,dest);
+ 	assert(0 == err);
++	/* Give the output thread a little extra time to initialize since a race
++	** condition can result if it's not already waiting on the PercHigh
++	** condition when the input thread signals it. This can happen when the 
++	** input data stream is extremely short.
++	*/
++	(void) mt_usleep(5000);
+ 	if (Status) {
+ 		err = pthread_create(&Reader,0,&inputThread,0);
+ 		assert(0 == err);
