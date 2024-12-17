@@ -1,10 +1,12 @@
 app-arch/afio 2.5 2.5.1.2 9997 9998 9999: Afio creates cpio-format archives.
 app-emacs/asn1-mode 0.1 9999: ASN.1/GDMO mode for GNU Emacs
+app-misc/freeplane-bin 1.9.12: Java application for Mind Mapping, Knowledge and Project Management
 dev-db/mysql-init-scripts 2.1_p1-r1: Gentoo MySQL init scripts.
 dev-libs/argtable 2.13-r10: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-util/asn1c 0.9.21 0.9.28: Open Source ASN.1 Compiler
 dev-util/dumpasn1 20170218 20210422: Peter Gutmann's ASN.1 dump utility
 net-fs/samba 4.19.7_p1 4.21.1_p1: Samba Suite Version 4
+sys-apps/dtc 1.4.1: Open Firmware device tree compiler
 sys-apps/openrc 0.23.2_p1: OpenRC manages the services, startup and shutdown of a host
 sys-block/mbuffer 20230301_p1 20240707_p1: M(easuring)buffer is a replacement for buffer with additional functionality (+ JRG race condition patch)
 sys-boot/grub 2.12_p1-r4 2.12_p1-r5: GNU GRUB boot loader w/ JRG Experimental ZFS Dataset Identification Patch
