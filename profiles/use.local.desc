@@ -36,3 +36,4 @@ sys-boot/grub:mount - Build and install the grub-mount utility
 sys-boot/grub:themes - Build and install GRUB themes (starfield)
 sys-boot/grub:truetype - Build and install grub-mkfont conversion utility
 sys-fs/squashfs-tools:xz - Add xz compression support.
+sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware over local copy.
