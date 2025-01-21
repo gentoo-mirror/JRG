@@ -22,6 +22,12 @@ case "${PV}" in
 			"
 		inherit git-r3
 		;;
+	# My upstream research branch, release candidate.
+	9998_rc1)
+		inherit git-r3
+		EGIT_REPO_URI="https://github.com/john-r-graham/portage.git"
+		REFS="refs/heads/home-directory-template-rc1"
+		;;
 	# Local default path research branch.
 	9997)
 		EGIT_REPO_URI="file:///home/jgraham/Projects/Gentoo/portage-experiments/portage/"
