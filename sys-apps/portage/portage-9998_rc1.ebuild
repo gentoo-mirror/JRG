@@ -16,25 +16,23 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 case "${PV}" in
 	# Head of master branch. This is a Gentoo convention.
 	9999)
-		inherit git-r3
 		EGIT_REPO_URI="
 			https://anongit.gentoo.org/git/proj/portage.git
 			https://github.com/gentoo/portage.git
-		"
+			"
+		inherit git-r3
 		;;
 	# My upstream research branch, release candidate.
 	9998_rc1)
 		inherit git-r3
 		EGIT_REPO_URI="https://github.com/john-r-graham/portage.git"
 		REFS="refs/heads/home-directory-template-rc1"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 		;;
-	# My local research branch.
-	9998)
-		inherit git-r3
-		EGIT_REPO_URI="file:///home/jgraham/Projects/Gentoo/portage-experiments/portage"
+	# Local default path research branch.
+	9997)
+		EGIT_REPO_URI="file:///home/jgraham/Projects/Gentoo/portage-experiments/portage/"
 		REFS="refs/heads/home-directory-template"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		inherit git-r3
 		;;
 	# Normal upstream tarball releases.
 	*)
@@ -109,16 +107,9 @@ PDEPEND="
 	)
 "
 
-pkg_pretend() {
-	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
-
-	check_extra_config
-}
-
-# JRG: Bespoke src_unpack() to fetch from the correct repo and branch.
 src_unpack() {
 	case "${PV}" in
-		9999|9998|9998_rc1)
+		9999|9998|9997)
 			git-r3_fetch ${EGIT_REPO_URI} ${REFS} ${TAG}
 			git-r3_checkout ${EGIT_REPO_URI} "${WORKDIR}/${P}" ${TAG}
 			;;
@@ -126,6 +117,12 @@ src_unpack() {
 			default
 			;;
 	esac
+}
+
+pkg_pretend() {
+	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
+
+	check_extra_config
 }
 
 src_prepare() {
