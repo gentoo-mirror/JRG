@@ -8,7 +8,7 @@ dev-util/dumpasn1 20170218 20210422: Peter Gutmann's ASN.1 dump utility
 net-fs/samba 4.19.7_p1 4.21.1_p1 9998: Samba Suite Version 4
 sys-apps/dtc 1.4.1: Open Firmware device tree compiler
 sys-apps/openrc 0.23.2_p1: OpenRC manages the services, startup and shutdown of a host
-sys-apps/portage 9997 9998_rc1 9998: The package management and distribution system for Gentoo
+sys-apps/portage 9997 9998_rc1: The package management and distribution system for Gentoo
 sys-block/mbuffer 20230301_p1 20240707_p1 20241007_p1: M(easuring)buffer is a replacement for buffer with additional functionality (+ JRG race condition patch)
 sys-boot/grub 2.12_p1-r4 2.12_p1-r5: GNU GRUB boot loader w/ JRG Experimental ZFS Dataset Identification Patch
 sys-fs/squashfs-tools 4.5.1-r1: tools to create and extract Squashfs filesystems
