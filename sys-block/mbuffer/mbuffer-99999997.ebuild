@@ -36,7 +36,6 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="debug ssl test"
 REQUIRED_USE="test? ( ssl )"
 RESTRICT="!test? ( test )"
