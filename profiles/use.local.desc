@@ -2,6 +2,19 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+app-crypt/certbot:certbot-apache - Enable Apache plugin.
+app-crypt/certbot:certbot-dns-dnsimple - Enable DNSimple Authenticator plugin.
+app-crypt/certbot:certbot-dns-dnsmadeeasy - Enable DNS Made Easy DNS Authenticator plugin.
+app-crypt/certbot:certbot-dns-gehirn - Enable Gehirn Infrastructure Service DNS Authenticator plugin.
+app-crypt/certbot:certbot-dns-google - Enable Google Cloud DNS Authenticator plugin.
+app-crypt/certbot:certbot-dns-linode - Enable Linode DNS Authenticator plugin plugin.
+app-crypt/certbot:certbot-dns-luadns - Enable LuaDNS Authenticator plugin.
+app-crypt/certbot:certbot-dns-nsone - Enable NS1 DNS Authenticator plugin.
+app-crypt/certbot:certbot-dns-ovh - Enable OVH DNS Authenticator plugin.
+app-crypt/certbot:certbot-dns-rfc2136 - Enable RFC 2136 DNS Authenticator plugin.
+app-crypt/certbot:certbot-dns-route53 - Enable Route53 DNS Authenticator plugin.
+app-crypt/certbot:certbot-dns-sakuracloud - Enable Sakura Cloud DNS Authenticator plugin.
+app-crypt/certbot:certbot-nginx - Enable Nginx plugin.
 net-fs/samba:addc - Enable Active Directory Domain Controller support
 net-fs/samba:ads - Enable Active Directory support
 net-fs/samba:ceph - Enable support for Ceph distributed filesystem via sys-cluster/ceph
