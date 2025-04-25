@@ -16,11 +16,11 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 case "${PV}" in
 	# Head of master branch. This is a Gentoo convention.
 	9999)
+		inherit git-r3
 		EGIT_REPO_URI="
 			https://anongit.gentoo.org/git/proj/portage.git
 			https://github.com/gentoo/portage.git
 			"
-		inherit git-r3
 		;;
 	# My upstream research branch, release candidate.
 	9998_rc1)
@@ -30,9 +30,9 @@ case "${PV}" in
 		;;
 	# Local default path research branch.
 	9997)
+		inherit git-r3
 		EGIT_REPO_URI="file:///home/jgraham/Projects/Gentoo/portage-experiments/portage/"
 		REFS="refs/heads/home-directory-template"
-		inherit git-r3
 		;;
 	# Normal upstream tarball releases.
 	*)
@@ -109,7 +109,7 @@ PDEPEND="
 
 src_unpack() {
 	case "${PV}" in
-		9999|9998|9997)
+		9999|9998_rc1|9997)
 			git-r3_fetch ${EGIT_REPO_URI} ${REFS} ${TAG}
 			git-r3_checkout ${EGIT_REPO_URI} "${WORKDIR}/${P}" ${TAG}
 			;;
