@@ -15,11 +15,11 @@ MY_P=$(ver_cut 1-4 ${P})
 SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
-einfo "JRG: P     = $P"
-einfo "JRG: PV    = $PV"
-einfo "JRG: PN    = $PN"
-einfo "JRG: MY_P  = $MY_P"
-einfo "JRG: S     = $S"
+# einfo "JRG: P     = $P"
+# einfo "JRG: PV    = $PV"
+# einfo "JRG: PN    = $PN"
+# einfo "JRG: MY_P  = $MY_P"
+# einfo "JRG: S     = $S"
 
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
