@@ -44,6 +44,13 @@ net-im/pidgin:python - Build libgnt (GLib Ncurses Toolkit used by finch) with py
 net-im/pidgin:sounds-only - Install only the Pidgin sounds. Feature is specific to the JRG overlay
 net-im/pidgin:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
 net-im/pidgin:zephyr - Enable Zephyr protocol support
+net-vpn/openvpn:dco - Enable support for kernel data channel offload
+net-vpn/openvpn:down-root - Enable the down-root plugin
+net-vpn/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
+net-vpn/openvpn:mbedtls - Use mbed TLS as the backend crypto library
+net-vpn/openvpn:openssl - Use OpenSSL as the backend crypto library
+net-vpn/openvpn:pkcs11 - Enable PKCS#11 smartcard support
+net-vpn/openvpn:plugins - Enable the OpenVPN plugin system
 sys-apps/dtc:yaml - support .yaml-encoded device trees
 sys-apps/openrc:cli-args-colon - Support extra arguments to the init script on the command line: colon syntax.
 sys-apps/openrc:cli-args-dasha - Support extra arguments to the init script on the command line: -a syntax.
