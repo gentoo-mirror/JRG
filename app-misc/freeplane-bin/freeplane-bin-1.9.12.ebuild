@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ DEPEND="
 	app-arch/unzip"
 
 src_install() {
-	sed -e "/freepath=/s:=.*:=${EROOT}/opt/${APP_NAME}:" \
+	sed -e "/freepath=/s:=.*:=${EROOT}opt/${APP_NAME}:" \
 		-i freeplane.sh
 	newbin freeplane.sh freeplane
 
