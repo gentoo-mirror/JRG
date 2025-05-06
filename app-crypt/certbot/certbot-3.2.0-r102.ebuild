@@ -311,6 +311,6 @@ src_install() {
 
 	# Bug <Insert JRG's bug here>: Insert decription here.
 	if use certbot-apache ; then
-		dosym /usr/lib64/apache2/modules /etc/apache2/modules
+		dosym /usr/lib64/apache2/modules /etc/apache2
 	fi
 }

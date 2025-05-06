@@ -34,6 +34,16 @@ net-fs/samba:system-heimdal - Use app-crypt/heimdal instead of bundled heimdal.
 net-fs/samba:system-mitkrb5 - Use app-crypt/mit-krb5 instead of app-crypt/heimdal.
 net-fs/samba:unwind - Enable libunwind usage for backtraces
 net-fs/samba:winbind - Enables support for the winbind auth daemon
+net-im/pidgin:gadu - Enable Gadu Gadu protocol support
+net-im/pidgin:groupwise - Enable Novell Groupwise protocol support
+net-im/pidgin:gstreamer - Enables voice and video sessions
+net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol
+net-im/pidgin:ncurses - Build finch, console interface
+net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
+net-im/pidgin:python - Build libgnt (GLib Ncurses Toolkit used by finch) with python scripting support
+net-im/pidgin:sounds-only - Install only the Pidgin sounds. Feature is specific to the JRG overlay
+net-im/pidgin:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
+net-im/pidgin:zephyr - Enable Zephyr protocol support
 sys-apps/dtc:yaml - support .yaml-encoded device trees
 sys-apps/openrc:cli-args-colon - Support extra arguments to the init script on the command line: colon syntax.
 sys-apps/openrc:cli-args-dasha - Support extra arguments to the init script on the command line: -a syntax.

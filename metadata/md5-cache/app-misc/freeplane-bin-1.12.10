@@ -8,6 +8,6 @@ KEYWORDS=~amd64
 LICENSE=GPL-2
 RDEPEND=>=virtual/jre-1.8
 SLOT=0
-SRC_URI=https://downloads.sourceforge.net/project/freeplane/freeplane%20stable/archive/1.9.12/freeplane_bin-1.9.12.zip
+SRC_URI=https://downloads.sourceforge.net/project/freeplane/freeplane%20stable/archive/1.12.10/freeplane_bin-1.12.10.zip
 _eclasses_=desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	xdg	3ef49a87c52c8b77c476351195dfe575
-_md5_=5806d2eb1a4d5a6d2acfa0dfc2a543b0
+_md5_=7ec078cac6637a95ef8bb14deb4a1581
