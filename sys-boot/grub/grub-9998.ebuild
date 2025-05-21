@@ -162,21 +162,6 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-		pushd "${P}" >/dev/null || die
-		local GNULIB_URI="https://git.savannah.gnu.org/git/gnulib.git"
-		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
-		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
-		git-r3_checkout "${GNULIB_URI}" gnulib
-		popd >/dev/null || die
-	elif use verify-sig; then
-		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig}
-	fi
-	default
-}
-
-src_unpack() {
 	case "${PV}" in
 		9999|9998)
 			git-r3_src_unpack
