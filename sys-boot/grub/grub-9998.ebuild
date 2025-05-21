@@ -45,7 +45,7 @@ case "${PV}" in
 	# Local default path research branch.
 	9998)
 		inherit git-r3
-		EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
+		EGIT_REPO_URI="file:///home/jgraham/userspace/Projects/grub/"
 		EGIT_COMMIT="0087bc6902182fe5cedce2d034c75a79cf6dd4f3"
 		;;
 	# Normal upstream tarball releases.
