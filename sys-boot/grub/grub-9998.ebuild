@@ -46,7 +46,7 @@ case "${PV}" in
 	9998)
 		inherit git-r3
 		EGIT_REPO_URI="file:///home/jgraham/userspace/Projects/grub/"
-		EGIT_COMMIT="0087bc6902182fe5cedce2d034c75a79cf6dd4f3"
+		EGIT_COMMIT="73d1c959ea3417e9309ba8c6102d7d6dc7c94259"
 		;;
 	# Normal upstream tarball releases.
 	*)

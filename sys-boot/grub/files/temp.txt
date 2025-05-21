@@ -1,4 +1,4 @@
-g73d1c959ea3417e9309ba8c6102d7d6dc7c94259 cryptocheck: Add --quiet option
+73d1c959ea3417e9309ba8c6102d7d6dc7c94259 cryptocheck: Add --quiet option
 dbc0eb5bd1f40de9b394e3a86e84f46c39a23e40 disk/cryptodisk: Wipe the passphrase from memory
 301b4ef25a8fafaeba48498e97efd28bd2809f97 disk/cryptodisk: Add the "erase secrets" function
 23ec4535f40dc53f68d2709f8fb44af571431ca7 docs: Document available crypto disks checks
