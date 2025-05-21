@@ -36,6 +36,8 @@ min_route() {
 	echo "$r"
 }
 
+set -x
+
 if [ "${PEER_DNS}" != "no" ]; then
 	NS=
 	DOMAIN=
@@ -50,6 +52,8 @@ if [ "${PEER_DNS}" != "no" ]; then
 			else
 				SEARCH="${SEARCH}${SEARCH:+ }${opt#dhcp-option DOMAIN *}"
 			fi
+		elif [ "${opt}" != "${opt#dhcp-option DOMAIN-SEARCH *}" ] ; then
+			SEARCH="${SEARCH}${SEARCH:+ }${opt#dhcp-option DOMAIN-SEARCH *}"
 		elif [ "${opt}" != "${opt#dhcp-option DNS *}" ] ; then
 			NS="${NS}nameserver ${opt#dhcp-option DNS *}\n"
 		fi
