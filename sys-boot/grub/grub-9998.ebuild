@@ -35,6 +35,7 @@ case "${PV}" in
 	# Head of master branch. This is a Gentoo convention.
 	9999)
 		inherit git-r3
+		EGIT_REPO_URI="file:///home/jgraham/userspace/Projects/gnulib/"
 		EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 		GRUB_AUTORECONF=1
 		GRUB_BOOTSTRAP=1
@@ -43,7 +44,7 @@ case "${PV}" in
 	9998)
 		inherit git-r3
 		EGIT_REPO_URI="file:///home/jgraham/userspace/Projects/grub/"
-		EGIT_COMMIT="73d1c959ea3417e9309ba8c6102d7d6dc7c94259"
+		EGIT_COMMIT="75ca9db22e8ed0dbebb2aec53722972de0680a463"
 		GRUB_AUTORECONF=1
 		GRUB_BOOTSTRAP=1
 		;;
