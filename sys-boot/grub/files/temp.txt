@@ -1,0 +1,293 @@
+g73d1c959ea3417e9309ba8c6102d7d6dc7c94259 cryptocheck: Add --quiet option
+dbc0eb5bd1f40de9b394e3a86e84f46c39a23e40 disk/cryptodisk: Wipe the passphrase from memory
+301b4ef25a8fafaeba48498e97efd28bd2809f97 disk/cryptodisk: Add the "erase secrets" function
+23ec4535f40dc53f68d2709f8fb44af571431ca7 docs: Document available crypto disks checks
+10d778c4b4d56cc36836d86a9698bc5272b12101 commands/search: Add the diskfilter support
+7a584fbde0c339816a57d55fc165a854039cf0b2 disk/diskfilter: Introduce the "cryptocheck" command
+ed691c0e0e20d9d0e8d8305a120e8c61d6be3d38 commands/search: Introduce the --cryptodisk-only argument
+c448f511e74cb7c776b314fcb7943f98d3f22b6d kern/rescue_reader: Block the rescue mode until the CLI authentication
+4abac0ad5a7914dd3cdfff08aaac06588bf98d80 fs/xfs: Fix large extent counters incompat feature support
+a4da71dafeea519b034beb159dfe80c486c2107c util/grub-install: Include raid5rec module for RAID 4 as well
+223fcf808424227b85969972931d7da3cd71fe9a loader/ia64/efi/linux: Reset grub_errno on failure to allocate
+6504a8d4bdd3f8d3a8541b3eee69dce24ad986df lib/datetime: Specify license in emu module
+8fef533cf69547576f522b0e563c9c6fee635ece configure: Add -mno-relax on riscv*
+1fe0948558258dbdd371cf2df8ccc993699fb76a docs: Document the long options of tpm2_key_protect_init
+6252eb97ca54cb5865f0d9d531a5b06cbea5bf95 INSTALL: Document the packages needed for TPM2 key protector tests
+9d4b382aa0ea161461f920b8d0c5f656285ca93d docs: Update NV index mode of TPM2 key protector
+2043b6899b20e32bb74458689a5e5bf6d8144f63 tests/tpm2_key_protector_test: Add more NV index mode tests
+9f66a4719b7fed24fe36154d634c16dd9bd528c9 tests/tpm2_key_protector_test: Reset "ret" on fail
+b7d89e6671161d4e1dfa694355c060345e0cebd9 tests/tpm2_key_protector_test: Simplify the NV index mode test
+5934bf51cbdf820c71eeed4bbbbcf23756e96217 util/grub-protect: Support NV index mode
+cd9cb944d973da6a031d06183cc6da974beb4bae tpm2_key_protector: Support NV index handles
+fa69deac565e5d5015ca396b017239cd96900673 tpm2_key_protector: Unseal key from a buffer
+75c480885ab00fb9bc046fe214df60007116aef2 tss2: Add TPM 2.0 NV index commands
+041164d00e79ffd2433675a5dd5b824833b9fc6a tss2: Fix the missing authCommand
+46c9f3a8dac5274c8d117ea131ca5c5842f9276f tpm2_key_protector: Add tpm2_dump_pcr command
+617dab9e476e8ea5aa314dcc5412bbd8a6f1f465 tpm2_key_protector: Dump PCRs on policy fail
+204a6ddfb3bb456929e7c364e1e8d6ee1928b471 loader/i386/linux: Update linux_kernel_params to match upstream
+6b64f297e5906feb295dcc6fb5046368f5f3e95b loader/xnu: Fix memory leak
+f94d257e8c983e6c3f4a7f5ce8a45f5cd7299f04 fs/btrfs: Fix memory leaks
+81146fb6238f5202fada90f0da49ba3580b944c2 loader/i386/linux: Fix resource leak
+1d005944754b7298b6df3debddb6abae22745265 lib/reloacator: Fix memory leaks
+f3f1fcecdce5e8d7099befc3d2c3ae25eb7cc954 disk/ldm: Fix memory leaks
+aae2ea619e0f09c353fd6929910f925c92a412c0 fs/ntfs: Fix NULL pointer dereference and possible infinite loop
+3b25e494d47e7a728e7ce6264b10f2aa1063f9c7 net/drivers/ieee1275/ofnet: Add missing grub_malloc()
+fee6081ec79557d72b6d1849222441207db45588 kern/ieee1275/init: Increase MIN_RMA size for CAS negotiation on PowerPC machines
+b66c6f9182fce873d906bc9871c649af38e35b53 fs/zfs: Fix a number of memory leaks in ZFS code
+1d59f39b5f1b407560ebf4d8f9bd45054a2c297c tests/util/grub-shell: Remove the work directory on successful run and debug is not on
+e0116f3bd515e5857844ac6c543c4bb90e6f5d70 tests/grub_cmd_cryptomount: Remove temporary directories if successful and debug is not on
+e6e2b73db8004e122a06a253107cef2343b6e092 tests/grub_cmd_cryptomount: Default TMPDIR to /tmp
+32b02bb92eb12be8391c7269346692119cb4c441 tests/grub_cmd_cryptomount: Cleanup the cryptsetup script unless debug is enabled
+c188ca5d5ee692d15a433b4e2a44d2deb6b680a2 tests: Cleanup generated files on expected failure in grub_cmd_cryptomount
+50320c093abe29dfa5adc349529128425bade56a tests/util/grub-shell-luks-tester: Add missing line to create RET variable in cleanup
+bb6d3199b384d400fb87bf96dfddb95f5e6b08b5 tests/util/grub-shell-luks-tester: Find cryptodisk by UUID
+3fd163e453b577b6728babe80f8f77c981a67b08 tests/util/grub-shell: Default qemuopts to envvar $GRUB_QEMU_OPTS
+ff7f5530713c203c90a7dea2b7c56d403673548b disk/lvm: Add informational messages in error cases of ignored features
+a16b4304a2b4f2b5ff57e247725389475d2c52dd disk/lvm: Add support for cachevol LV
+9a37d6114593417bbd29b2d2c3794c05305e9ebe disk/lvm: Add support for integrity LV
+6c14b87d6fe03972f7a24689e51008698aedba15 lvm: Match all LVM segments before validation
+d34b9120e7dd4c860e103545f57ad8083aea4fea disk/lvm: Remove unused cache_pool
+90848a1f7ce30d153d7636131d0c6a2d9fd7f242 disk/lvm: Make cache_lv more generic as ignored_feature_lv
+488ac8bda9a8e33cad7096e6a09eb89da84aeb85 commands/ls: Add directory header for dir args
+096bf59e4c852d13cccec97511acfa2db7ee9980 commands/ls: Print full paths for file args
+90288fc48d15c9b39b89ef72d1ceb3e965d6d61d commands/ls: Output path for single file arguments given with path
+6337d84afa247ada63dda65ca33a015ec9f800f6 commands/ls: Show modification time for file paths
+cbfb031b145f89523aa47d5f493669d6e0349149 commands/ls: Merge print_files_long() and print_files() into print_file()
+112d2069cf348d424ab49e7cb01abdb2320ecee8 commands/ls: Return proper GRUB_ERR_* for functions returning type grub_err_t
+da9740cd520aa1d664d649ada6871c2eeef54611 commands/acpi: Use options enum to index command options
+1acf11fe4c38b43824c0e32e869b721fb2305332 docs: Capture additional commands restricted by lockdown
+6a168afd32b2d66aacf784aec447826c398a2ad4 docs: Document restricted filesystems in lockdown
+be0ae9583e962e1cb9b5bc7bd3513ede32cc95f1 loader/i386/bsd: Fix type passed for the kernel
+ee27f07a650d13f66ba7b867de3b39ddeb3631ec kern/partition: Unbreak support for nested partitions
+cb639acea0174b7794c05e6d8833748818d78c57 lib/tss2/tss2_structs.h: Fix clang build - remove duplicate typedef
+696e35b7ff92689add3ba898bee4f4892b3a3cfe include/grub/mm.h: Remove duplicate inclusion of grub/err.h
+187338f1ac5e6f2a567f0799e5f291c48771d335 script/execute: Don't let trailing blank lines determine the return code
+ff173a1c0ccd390b61fcb69e56d424a3e66c077b gitignore: Ignore generated files from libtasn
+fbcc3889178a98d6189da5ef0ed1146613cce750 util/grub.d/30_os-prober.in: Conditionally show or hide chain and efi menu entries
+56ccc5ed569869fd735074ccebeaa7aab058342d util/grub.d/30_os-prober.in: Fix GRUB_OS_PROBER_SKIP_LIST for non-EFI
+01f064064c3146bd82e0c8db0da11d286bca31c6 docs: Do not reference non-existent --dumb option
+3f440b5a53733027b118365f173e66b5c965bcdc docs: Replace @lbracechar{} and @rbracechar{} with @{ and @}
+f209887381a56dea79152ab26ffb485718e3218e fs/xfs: Fix grub_xfs_iterate_dir() return value in case of failure
+1ed2628b560cedac7fd1a696985ab85b24541a8e fs/xfs: Add new superblock features added in Linux 6.12/6.13
+348cd416a3574348f4255bf2b04ec95938990997 fs/ext2: Rework out-of-bounds read for inline and external extents
+c730eddd2a820ab690875c25dd1032be3305bd0d disk/ahci: Remove conditional operator for endtime
+f0a08324d0f923527ba611887a3780c1f2cb1578 term/ns8250-spcr: Return if redirection is disabled
+7161e2437dda654c69b930edb2fd18bbfe5c1f05 commands/file: Fix NULL dereference in the knetbsd tests
+11b9c2dd0d341a319209b8555db2d5d1f13fa152 gdb_helper: Typo hueristic
+224aefd0574fa9325e5e0682b6b96f77084798ce kern/efi/mm: Reset grub_mm_add_region_fn after ExitBootServices() call
+531750f7bfc475332b2046dd516bab582ba7decf i386/tsc: The GRUB menu gets stuck due to unserialized rdtsc
+f2a1f66e721d2231c3f7d80733c33cd808f0155d kern/i386/tsc_pmtimer: The GRUB menu gets stuck due to failed calibration
+13f005ed8308d31385ed1147c4fbd33ea870582f loader/i386/linux: Fix cleanup if kernel doesn't support 64-bit addressing
+4dc6166571645780c459dde2cdc1b001a5ec844c loader/i386/bsd: Use safe math to avoid underflow
+490a6ab71cebd96fae7a1ceb9067484f5ccbec2a loader/i386/linux: Cast left shift to grub_uint32_t
+a8d6b06331a75d75b46f3dd6cc6fcd40dcf604b7 kern/misc: Add sanity check after grub_strtoul() call
+8e6e87e7923ca2ae880021cb42a35cc9bb4c8fe2 kern/partition: Add sanity check after grub_strtoul() call
+5b36a5210e21bee2624f8acc36aefd8f10266adb normal/menu: Use safe math to avoid an integer overflow
+9907d9c2723304b42cf6da74f1cc6c4601391956 bus/usb/ehci: Define GRUB_EHCI_TOGGLE as grub_uint32_t
+f8795cde217e21539c2f236bcbb1a4bf521086b3 misc: Ensure consistent overflow error messages
+66733f7c7dae889861ea3ef3ec0710811486019e osdep/unix/getroot: Fix potential underflow
+d13b6e8ebd10b4eb16698a002aa40258cf6e6f0e script/execute: Fix potential underflow and NULL dereference
+e3c578a56f9294e286b6028ca7c1def997a17b15 fs/sfs: Check if allocated memory is NULL
+1c06ec900591d1fab6fbacf80dc010541d0a5ec8 net: Check if returned pointer for allocated memory is NULL
+dee2c14fd66bc497cdc74c69fde8c9b84637c8eb net: Prevent overflows when allocating memory for arrays
+4beeff8a31c4fb4071d2225533cfa316b5a58391 net: Use safe math macros to prevent overflows
+dd6a4c8d10e02ca5056681e75795041a343636e4 fs/zfs: Add missing NULL check after grub_strdup() call
+13065f69dae0eeb60813809026de5bd021051892 fs/zfs: Check if returned pointer for allocated memory is NULL
+7f38e32c7ebeaebb79e2c71e3c7d5ea367d3a39c fs/zfs: Prevent overflows when allocating memory for arrays
+88e491a0f744c6b19b6d4caa300a576ba56db7c9 fs/zfs: Use safe math macros to prevent overflows
+cde9f7f338f8f5771777f0e7dfc423ddf952ad31 fs: Prevent overflows when assigning returned values from read_number()
+84bc0a9a68835952ae69165c11709811dae7634e fs: Prevent overflows when allocating memory for arrays
+6608163b08a7a8be4b0ab2a5cd4593bba07fe2b7 fs: Use safe math macros to prevent overflows
+fbaddcca541805c333f0fc792b82772594e73753 disk/ieee1275/ofdisk: Call grub_ieee1275_close() when grub_malloc() fails
+33bd6b5ac5c77b346769ab5284262f94e695e464 disk: Check if returned pointer for allocated memory is NULL
+d8151f98331ee4d15fcca59edffa59246d8fc15f disk: Prevent overflows when allocating memory for arrays
+c407724dad6c3e2fc1571e57adbda71cc03f82aa disk: Use safe math macros to prevent overflows
+c4bc55da28543d2522a939ba4ee0acde45f2fa74 fs: Disable many filesystems under lockdown
+26db6605036bd9e5b16d9068a8cc75be63b8b630 fs/bfs: Disable under lockdown
+5f31164aed51f498957cdd6ed733ec71a8592c99 commands/hexdump: Disable memory reading in lockdown mode
+340e4d058f584534f4b90b7dbea2b64a9f8c418c commands/memrw: Disable memory reading in lockdown mode
+34824806ac6302f91e8cabaa41308eaced25725f commands/minicmd: Block the dump command in lockdown mode
+c68b7d23628a19da67ebe2e06f84165ee04961af commands/test: Stack overflow due to unlimited recursion depth
+dad8f502974ed9ad0a70ae6820d17b4b142558fc commands/read: Fix an integer overflow when supplying more than 2^31 characters
+b970a5ed967816bbca8225994cd0ee2557bad515 gettext: Integer overflow leads to heap OOB write
+09bd6eb58b0f71ec273916070fa1e2de16897a91 gettext: Integer overflow leads to heap OOB write or read
+7580addfc8c94cedb0cdfd7a1fd65b539215e637 gettext: Remove variables hooks on module unload
+9c16197734ada8d0838407eebe081117799bfe67 normal: Remove variables hooks on module unload
+2123c5bca7e21fbeb0263df4597ddd7054700726 commands/pgp: Unregister the "check_signatures" hooks on module unload
+0bf56bce47489c059e50e61a3db7f682d8c44b56 commands/ls: Fix NULL dereference
+05be856a8c3aae41f5df90cab7796ab7ee34b872 commands/extcmd: Missing check for failed allocation
+98ad84328dcabfa603dcf5bd217570aa6b4bdd99 kern/dl: Check for the SHF_INFO_LINK flag in grub_dl_relocate_symbols()
+d72208423dcabf9eb4a3bcb17b6b31888396bd49 kern/dl: Use correct segment in grub_dl_set_mem_attrs()
+500e5fdd82ca40412b0b73f5e5dda38e4a3af96d kern/dl: Fix for an integer overflow in grub_dl_ref()
+2c34af908ebf4856051ed29e46d88abd2b20387f video/readers/jpeg: Do not permit duplicate SOF0 markers in JPEG
+0707accab1b9be5d3645d4700dde3f99209f9367 net/tftp: Fix stack buffer overflow in tftp_open()
+5eef88152833062a3f7e017535372d64ac8ef7e1 net: Fix OOB write in grub_net_search_config_file()
+aa8b4d7facef7b75a2703274b1b9d4e0e734c401 net: Remove variables hooks when interface is unregisted
+a1dd8e59da26f1a9608381d3a1a6c0f465282b1d net: Unregister net_default_ip and net_default_mac variables hooks on unload
+d8a937ccae5c6d86dc4375698afca5cefdcd01e1 script/execute: Limit the recursion depth
+8a7103fddfd6664f41081f3bb88eebbf2871da2a kern/partition: Limit recursion in part_iterate()
+18212f0648b6de7d71d4c8f41eb4d8b78b3a299b kern/disk: Limit recursion depth
+67f70f70a36b6e87a65f928fe1e840a12eafb7ae disk/loopback: Reference tracking for the loopback
+13febd78db3cd85dcba67d8ad03ad4d42815f11e disk/cryptodisk: Require authentication after TPM unlock for CLI access
+16f196874fbe360a1b3c66064ec15adadf94c57b kern/file: Implement filesystem reference counting
+a7910687294b29288ac649e71b47493c93294f17 kern/file: Ensure file->data is set
+d1d6b7ea58aa5a80a4c4d0666b49460056c8ef0a fs/xfs: Ensuring failing to mount sets a grub_errno
+6ccc77b59d16578b10eaf8a4fe85c20b229f0d8a fs/xfs: Fix out-of-bounds read
+067b6d225d482280abad03944f04e30abcbdafa1 fs/ntfs: Implement attribute verification
+048777bc29043403d077d41a81d0183767b8bc71 fs/ntfs: Use a helper function to access attributes
+237a71184a32d1ef7732f5f49ed6a89c5fe1c99a fs/ntfs: Track the end of the MFT attribute buffer
+aff26318783a135562b904ff09e2359893885732 fs/ntfs: Fix out-of-bounds read
+7e2f750f0a795c4d64ec7dc7591edac8da2e978c fs/ext2: Fix out-of-bounds read for inline extents
+edd995a26ec98654d907a9436a296c2d82bc4b28 fs/jfs: Inconsistent signed/unsigned types usage in return values
+bd999310fe67f35a66de3bfa2836da91589d04ef fs/jfs: Use full 40 bits offset and address for a data extent
+ab09fd0531f3523ac0ef833404526c98c08248f7 fs/jfs: Fix OOB read caused by invalid dir slot index
+66175696f3a385b14bdf1ebcda7755834bd2d5fb fs/jfs: Fix OOB read in jfs_getent()
+1443833a9535a5873f7de3798cf4d8389f366611 fs/iso9660: Fix invalid free
+965db5970811d18069b34f28f5f31ddadde90a97 fs/iso9660: Set a grub_errno if mount fails
+f7c070a2e28dfab7137db0739fb8db1dc02d8898 fs/hfsplus: Set a grub_errno if mount fails
+563436258cde64da6b974880abff1bf0959f4da3 fs/f2fs: Set a grub_errno if mount fails
+X 0087bc6902182fe5cedce2d034c75a79cf6dd4f3 fs/tar: Integer overflow leads to heap OOB write
+2c8ac08c99466c0697f704242363fc687f492a0d fs/tar: Initialize name in grub_cpio_find_file()
+417547c10410b714e43f08f74137c24015f8f4c3 fs/hfs: Fix stack OOB write with grub_strcpy()
+c1a291b01f4f1dcd6a22b61f1c81a45a966d16ba fs/ufs: Fix a heap OOB write
+ea703528a8581a2ea7e0bad424a70fdf0aec7d8f misc: Implement grub_strlcpy()
+6811f6f09d61996a3acbc4fc0414e45964f0e2d9 tpm2_key_protector: Enable build for powerpc_ieee1275
+ff14b89bda0445b97ad43b7cdbc5f20345f20006 ieee1275/tcg2: Add TCG2 driver for ieee1275 PowerPC firmware
+72092a8641958af95402fa0e3e74cc57c36feefa ieee1275/tcg2: Refactor grub_ieee1275_tpm_init()
+8c0b5f200352603e53b799fca7b63f845a978f19 ieee1275/ibmvpm: Move TPM initialization functions to own file
+7344b3c7cee8dea94dbc97211c5e6d1925848865 ieee1275: Consolidate repeated definitions of IEEE1275_IHANDLE_INVALID
+29d1bd2a96948bc120cb5906188117f670797fcf term/ieee1275/serial: Cast 0 to proper type
+99ee68a0149b1132f160c80924ab2987ebafcbdd tss2: Adjust bit fields for big endian targets
+3770a690506061dd1f0daa3fd5ee1e3bb2e4c2dc docs: Document TPM2 key protector
+f898440cc1eec6e280ca149b3bea1334f28662e6 tests: Add tpm2_key_protector_test
+76a2bcb99754ee5b4159c35f66042e392139b815 tpm2_key_protector: Add grub-emu support
+135e0bc8863965eabc70f3c539c39135e0a00791 diskfilter: Look up cryptodisk devices first
+b35480b48e6f9506d8b7ad8a3b5206d29c24ea95 cryptodisk: Wipe out the cached keys from protectors
+6abf8af3c54abc04c4ec71c75d10fcfbc190e181 cryptodisk: Fallback to passphrase
+fba3a474e00ca10d6ec29ed4667de8911e4068e5 tpm2_key_protector: Implement NV index
+550ada7d67aa9690a3ba94d5f8d1b11515f5a502 tpm2_key_protector: Support authorized policy
+5f6a2fd513e649e5750242f9e59d1294dfb0c855 util/grub-protect: Add new tool
+ad0c52784a375cecaa8715d7deadcf5d65baf173 cryptodisk: Support key protectors
+48e230c317b3a65d262cc801633610496145e951 key_protector: Add TPM2 Key Protector
+35c9904df43ed4502fbfbda59da9b1b9426a6b58 tss2: Add TPM2 Software Stack (TSS2) support
+63a78f4b4dfa339f5cb68ecadb261639c9ca3cf8 tss2: Add TPM2 types and Marshal/Unmarshal functions
+2ad159d9b34324db445860ee5bcfe83cbeed6f6d tss2: Add TPM2 buffer handling functions
+5d260302da672258444b01239803c8f4d753e3f3 key_protector: Add key protectors framework
+3d60732f9febd938ee1078315f23509c2c0e3cdb libtasn1: Add the documentation
+99cda67889ffdd3ab9fcd447a6a9a48ec520a100 asn1_test: Test module for libtasn1
+504058e82a2d03351198acdde34027e756b42f38 libtasn1: Compile into asn1 module
+8a0fedef21aa882cb70f3eb9ae143589701cbc6d asn1_test: Enable the testcase only when GRUB_LONG_MAX is larger than GRUB_INT_MAX
+66cf4cb1448052cc5b04757821071917c82340ad asn1_test: Use the grub-specific functions and types
+0d0913fc61437710028ae06e53ee159ced06c802 asn1_test: Print the error messages with grub_printf()
+2e93a8e4bd73eb9647331550a306f66ec01a6102 asn1_test: Remove "verbose" and the unnecessary printf()
+b7568e33588c4a12e8f21930d692a9db8fb48807 asn1_test: Return either 0 or 1 to reflect the results
+d60a04baef5dae4c32817468355d97bc6c3f6f1c asn1_test: Rename the main functions to the test names
+54e0e19a29d06120393a95bec9f86a03632c1797 asn1_test: Include asn1_test.h only
+0ad1d4ba861d28401e9dfb53624024aa747c171d libtasn1: Fix the potential buffer overrun
+4160ca9839f5d4c86df75ed2ee24ba0bf43bc9f4 libtasn1: Use grub_divmod64() for division
+8f56e5e5cfa7a6e4fe94fad951f8e2dd738cff14 libtasn1: Adjust the header paths in libtasn1.h
+d86df91cbe2694ab9dbddad04fc0b0bacb2e208f libtasn1: Replace strcat() with _asn1_str_cat()
+32fdfe60087bb757734d90db37e610c954c75d8b libtasn1: Replace strcat() with strcpy() in _asn1_str_cat()
+fa498af7b999957da990f5216ff3cee3326dfbdf libtasn1: Disable code not needed in GRUB
+9a26abbc36894ea9e9e5880afa30943770d60e8f libtasn1: Import libtasn1-4.19.0
+c85c2b9f5ff674d65025cd8fc0327bd062d82954 posix_wrap: Tweaks in preparation for libtasn1
+4f6c4609174d92c8b881bc5adb7fe971dd5cee0b kern/fs: Honour file->read_hook() in grub_fs_blocklist_read()
+792132c72a9074c049cd4436b96fad142c9cc65f docs: Fix incorrect and potentially confusing language and minor formatting
+1763d83f540daa56fcb4f8359546331e25b25d56 docs: Correct GRUB config file name for network boot
+097fd9d9a1f4e56281ee43b010c1bfe7d0b1ab79 docs: Correct chainloader UEFI secure boot info
+f48e6af1173c0d30209f7576407e587b7c9cf48c docs: Correct PXE environment variables descriptions
+dd743ba42d0fd6679fd978d6bbc2f84c5cc3ea15 loader/multiboot: Do not add modules before successful download
+9a9082b501f68bc1c6d68c0e30a5118f03d05ed4 grub-mkimage: Add SBAT metadata into ELF note for PowerPC targets
+f97d4618a57e1969e8ba51869b8cd250ff24116c grub-mkimage: Create new ELF note for SBAT
+f26b39860d32e2b9edb30370349e40b1ac7055c8 commands/legacycfg: Avoid closing file twice
+337cb248625f00fd94f80d50a4f22acc9b2f0822 nx: Rename GRUB_DL_ALIGN to DL_ALIGN
+31de991dee02e045fdec2fc1ef32b86a3f3048d5 kern/acpi: Fix out of bounds access in grub_acpi_xsdt_find_table()
+f5bb766e688b1180e0ace3417d4947a934957a31 nx: Set the NX compatible flag for the GRUB EFI images
+94649c02670dae12c188cae471b9ae246b48f428 nx: Set page permissions for loaded modules
+09ca66673ad228c736b3d46f31201065373cf866 nx: Add memory attribute get/set API
+9fb80dd57eeca261e9a58a30a0915a2371dbaeba modules: Load module sections at page-aligned addresses
+6e2fe134ef536b178a8ae16d68fd2f55625c08fb modules: Don't allocate space for non-allocable sections
+2b79d550f331b7d275da7994eaf4d774a5abb5b3 modules: Strip .llvm_addrsig sections and similar
+246c82cdae4be6121ad3cede2f2c8995aebf752f modules: Make .module_license read-only
+616adeb80ba9c26a9aad8f248dfb52f3e09bf818 i386/memory: Rename PAGE_SIZE to GRUB_PAGE_SIZE and make it global
+95a7bfef5d94a70cf5a54c4e7036b6810869ef48 i386/memory: Rename PAGE_SHIFT to GRUB_PAGE_SHIFT
+1b1061409d8945868afac00d9308e9dd3289033d i386/msr: Extract and improve MSR support detection code
+929fafdf5ec3bcbcb47337b187d7f2d48229e086 i386/msr: Rename grub_msr_read() and grub_msr_write()
+d96cfd7bf86e177260557efb3c31ecbc9df34234 i386/msr: Merge rdmsr.h and wrmsr.h into msr.h
+86ec48882bd0b06268f93033bce9eea168188fae commands/tpm: Skip loopback image measurement
+3808b1a9bd47cf783d4b8775fbc788a9ce5afdd4 net/drivers/efi/efinet: Skip virtual VLAN devices during card enumeration
+e5f047be053a1d6d10590bc413d089535a13454c efi/console: Properly clear leftover artifacts from the screen
+c5ae124e11f28f637cbd38cb4d6c1b9817baa135 kern/riscv/efi/init: Use time register in grub_efi_get_time_ms()
+9c34d56c2dafcd2737db0e3e49df63bce4d8b504 loader/efi/linux: Reset freed pointer
+92bed41bf81381038f5ae431884d33aa1d771bcd loader/efi/linux: Reuse len variable
+33cb8aecdd89f8fbd347a9275f02e9a539be0261 lib/x86_64/relocator_asm: Use .quad instead of .long
+77cd623dee02624a193018062c85d87e80891c31 lib/x86_64/relocator_asm: Fix comment in code
+95145eea5e4237539a99f279c6099c6288aa4079 loader/efi/linux: Update comment
+d333e8bb379fc1bbf2db0bfe97e9a5536439eb36 util/grub-mkimagexx: Explicitly move modules to __bss_start for MIPS targets
+34b7f372126f0dd470732e4fb798b5a7fcaf1f75 include/grub/offsets.h: Set mod_align to 4 on MIPS
+ed06516738d1b41285e43838d1fbd4f992f7faf3 gentpl: Put boot/mips/startup_raw.S into beginning of the image
+648f2d16c0486465ead0186ed9a1187c559d72dd configure: Add -mno-gpopt option for mips and mipsel targets
+f0710d2d8f4662144c7550df67ec9681e501e8c7 lib/xzembed/xz_dec_bcj: Silence warning when no BCJ is available
+e61157bbd2f5fa57883ac8fbd8d2c0fcd67fe85a fs/erofs: Replace 64-bit modulo with bitwise operations
+5313fa83946cae77f48be998b95550371849a017 configure: Look for .otf fonts
+33b94f2a9bc90e086349808ef53bc7f87cff6122 loader/efi/chainloader: Do not print device path of chainloaded file
+ab1e6fc044393fb91cda6b60cacdb2dabf4f6bea docs: Document all GRUB modules
+9537f4403dd836d5a8a1c4e57b165837fc7239cf commands/bli: Fix crash in get_part_uuid()
+b53ec06a1d6f22ffc1139cbfc0f292e4ca2da9cd util/grub-mkrescue: Check existence of option arguments
+ab9fe8030022a01f3c6c8e0b070f4a381e71a48f loader/efi/fdt: Add fdtdump command to access device tree
+0cfec355d027a5a0692d52d6d6dbb8da0ab48f61 osdep/devmapper/getroot: Unmark 2 strings for translation
+f171122f03a5e0feca9541b50ef1bfd693c5fb21 loader/emu/linux: Fix determination of program name
+828717833fd18958199d731e366ef3fe997f2444 disk/cryptodisk: Fix translatable message
+9a2134a70fc6c7cad6d6954db5ab6732828dbfc1 tests: Add test for ZFS zstd
+f96df6fe9f6faa328c82820af88f14af07b2c9b9 fs/zfs/zfs: Add support for zstd compression
+55d35d62831af122fadf33c4bc8cd53aada949cb kern/efi/mm: Detect calls to grub_efi_drop_alloc() with wrong page counts
+61f1d0a612a01c2f48f718ff04590ff481e028f8 kern/efi/mm: Change grub_efi_allocate_pages_real() to call semantically correct free function
+dc0a3a27d67a6b1639d155cc69e8537077af1047 kern/efi/mm: Change grub_efi_mm_add_regions() to keep track of map allocation size
+b990df0bef9eb9f8ed4a111dfb0cdf6f88ff8829 tests/util/grub-fs-tester: Fix EROFS label tests in grub-fs-tester
+d41c64811d6859c63c1d46da326771a2d32d2d2f tests: Switch to requiring exfatprogs from exfat-utils
+c1ee4da6a9e58a292cc479702439115f837b08fd tests/util/grub-shell-luks-tester: Fix detached header test getting wrong header path
+c22e052fe2faa177c0f8316cc9d72ed6e2496e36 tests/util/grub-shell: Add flexibility in QEMU firmware handling
+d2fc9dfcd1ca6fa7e8bd281b1b2d36dc125ecd20 tests/util/grub-shell: Use pflash instead of -bios to load UEFI firmware
+88a7e64c2c38ff5d42098427e87563bceae3a4ba tests/util/grub-shell: Print gdbinfo if on EFI platform
+b8d29f1146eb7ad7a3bde3b39249f4c8673537b9 configure: Add Debian/Ubuntu DejaVu font path
+13b315c0a51e91d5b681f6b8a51a2bc475d08a3f term/ns8250-spcr: Add one more 16550 debug type
+8abec8e1538a7ea885713b4c8b5ad18f4b401b33 loader/i386/multiboot_mbi: Fix handling of errors in broken aout-kludge
+d35ff22516b161f6d472f7f5371a89597b072d04 net/drivers/ieee1275/ofnet: Remove 200 ms timeout in get_card_packet() to reduce input latency
+86df79275d065d87f4de5c97e456973e8b4a649c commands/efi/tpm: Re-enable measurements on confidential computing platforms
+0b4d01794a08efc6f6de88c5a08ff81bb52122d4 util/grub-mkpasswd-pbkdf2: Simplify the main function implementation
+fa36f6376087b81a4de05623a5cd871a8fa30b35 kern/ieee1275/init: Add IEEE 1275 Radix support for KVM on Power
+c464f1ec3486469cc47718a4de6730fefd1d9bf4 fs/zfs/zfs: Mark vdev_zaps_v2 and head_errlog as supported
+2ffc14ba950209e049cebdcae9cdb7dafc046865 types: Add missing casts in compile-time byteswaps
+c6ac4912043c2b21ecd790a2a06e7557cda25449 font: Add Fedora-specific font paths
+5e8989e4eda6fd8b2b497b35e20365b254212f30 fs/bfs: Fix improper grub_free() on non-existing files
+c806e4dc8895ec9ed110480034344cce25994816 io/gzio: Properly init a table
+243682baaa31b760d110acd20fa397d2e8616ebc io/gzio: Abort early when get_byte() reads nothing
+bb65d81fe320e4b20d0a9b32232a7546eb275ecc cli_lock: Add build option to block command line interface
+56e58828cf3cd32ba4768779accc6655120c3136 fs/erofs: Add tests for EROFS in grub-fs-tester
+9d603061aaa5edb9a0e5ba443ec01d5c295bef0a fs/erofs: Add support for the EROFS
+1ba39de62f91302f7eb95e78dc8ce9c086f74df8 safemath: Add ALIGN_UP_OVF() which checks for an overflow
+d291449ba3a7b51c4469404c2036a91002788d69 docs: Fix spelling mistakes
+6cc2e4481b5051febf50390839a9c1707e877731 util/grub.d/00_header.in: Quote background image pathname in output
+f456add5f4171b27a1f8aca98e02c14e123bbd59 disk/lvm: GRUB fails to detect LVM volumes due to an incorrect computation of mda_end
+386b59ddb42fa3f86ddfe557113b25c8fa16f88c disk/cryptodisk: Allow user to retry failed passphrase
+99b4c0c3841bf71b0f2ef83607e9d6f13874c67c disk/mdraid1x_linux: Prevent infinite recursion
+b272ed230eb9269a37a79b1ad760e1e233eb9916 efi: Fix stack protector issues
+6744840b17822b0c9b15ea8d0130429d133a22f2 build: Track explicit module dependencies in Makefile.core.def
+8719cc2040368d43ab2de0b6e1b850b2c9cfc5b7 windows: Add _stack_chk_guard/_stack_chk_fail symbols for Windows 64-bit target
+0876fdf215292a06ad087f862ae7677c85ae444f util/bash-completion: Fix for bash-completion 2.12
+28c4405208cfb6e2cea737f6cbaf17e631bac6cd util/grub-fstest: Add a new command zfs-bootfs
+52e039e00be77016a752ff77ee7e6e1d4a3f1c00 efi: Enable CMOS on x86 EFI platforms
+aa80270154d8593496a1f80398c1c66ddf87d635 acpi: Mark MADT entries as packed
+39c927df66c7ca62d97905d1385054ac9ce67209 gfxmenu/view: Resolve false grub_errno disrupting boot process
+68dd65cfdaad08b1f8ec01b84949b0bf88bc0d8c fs/xfs: Handle non-continuous data blocks in directory extents
+04d2a50f31c4f29a451b507aefe02bf0798b534b Revert "templates: Reinstate unused version comparison functions with warning"
+4380c2d8ad72e4f7ffd3dae3ad1de78159c2f2ba util/bash-completion: Load scripts on demand
+9e1b18fc17b623446c1adf0466158c7cf7a58303 util/grub.d/10_hurd.in: Find proper ld.so on 64-bit systems
+a8c050451581bc732998743d097ace9ca07620a2 osdep/hurd/getroot: Fix 64-bit build
+d89a2a6e57593f78e8675f1765032a0d2afad62f loader/i386/multiboot_mbi: Clean up redundant code
+db0d19dc5f85a6404f7e6a2d52bbeec0ea20579d osdep/unix/getroot: Clean up redundant code
+c8bf75875761592e4019c6968725309cb1e79a13 fs/jfs: Clean up redundant code
+5a311d029fb3b0526551ea89b8f16842355f0d03 tests: Switch password quality check off for luks2 test
+b835601c7639ed1890f2d3db91900a8506011a8e build: Include grub-core/extra_deps.lst in dist
+8961305b4ee686fb5abf1a7c0612794f28056593 Bump version to 2.13
+5ca9db22e8ed0dbebb2aec53722972de0680a463 Release 2.12
