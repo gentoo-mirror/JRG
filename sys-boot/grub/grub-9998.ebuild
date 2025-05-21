@@ -16,11 +16,6 @@ EAPI=8
 # If any of the above applies to a user patch, the user should set the
 # corresponding variable in make.conf or the environment.
 
-if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTORECONF=1
-	GRUB_BOOTSTRAP=1
-fi
-
 PYTHON_COMPAT=( python3_{10..13} )
 WANT_LIBTOOL=none
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
@@ -41,12 +36,16 @@ case "${PV}" in
 	9999)
 		inherit git-r3
 		EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
+		GRUB_AUTORECONF=1
+		GRUB_BOOTSTRAP=1
 		;;
 	# Local default path research branch.
 	9998)
 		inherit git-r3
 		EGIT_REPO_URI="file:///home/jgraham/userspace/Projects/grub/"
 		EGIT_COMMIT="73d1c959ea3417e9309ba8c6102d7d6dc7c94259"
+		GRUB_AUTORECONF=1
+		GRUB_BOOTSTRAP=1
 		;;
 	# Normal upstream tarball releases.
 	*)
