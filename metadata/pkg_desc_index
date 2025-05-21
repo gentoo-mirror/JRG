@@ -8,7 +8,7 @@ dev-util/asn1c 0.9.21 0.9.28: Open Source ASN.1 Compiler
 dev-util/dumpasn1 20170218 20210422: Peter Gutmann's ASN.1 dump utility
 net-fs/samba 4.19.7_p1 4.21.1_p1 9998: Samba Suite Version 4
 net-im/pidgin 2.14.13_p1-r1 2.14.14_p1-r1: GTK Instant Messenger client
-net-vpn/openvpn 2.6.12_p1-r1: Robust and highly flexible tunneling application compatible with many OSes
+net-vpn/openvpn 2.6.12_p1-r1 2.6.14_p1: Robust and highly flexible tunneling application compatible with many OSes
 sys-apps/dtc 1.4.1: Open Firmware device tree compiler
 sys-apps/openrc 0.23.2_p1: OpenRC manages the services, startup and shutdown of a host
 sys-apps/portage 9997 9998_rc1: The package management and distribution system for Gentoo
