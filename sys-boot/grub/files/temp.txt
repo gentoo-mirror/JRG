@@ -146,7 +146,7 @@ ab09fd0531f3523ac0ef833404526c98c08248f7 fs/jfs: Fix OOB read caused by invalid 
 965db5970811d18069b34f28f5f31ddadde90a97 fs/iso9660: Set a grub_errno if mount fails
 f7c070a2e28dfab7137db0739fb8db1dc02d8898 fs/hfsplus: Set a grub_errno if mount fails
 563436258cde64da6b974880abff1bf0959f4da3 fs/f2fs: Set a grub_errno if mount fails
-X 0087bc6902182fe5cedce2d034c75a79cf6dd4f3 fs/tar: Integer overflow leads to heap OOB write
+0087bc6902182fe5cedce2d034c75a79cf6dd4f3 fs/tar: Integer overflow leads to heap OOB write
 2c8ac08c99466c0697f704242363fc687f492a0d fs/tar: Initialize name in grub_cpio_find_file()
 417547c10410b714e43f08f74137c24015f8f4c3 fs/hfs: Fix stack OOB write with grub_strcpy()
 c1a291b01f4f1dcd6a22b61f1c81a45a966d16ba fs/ufs: Fix a heap OOB write
@@ -238,9 +238,9 @@ ab9fe8030022a01f3c6c8e0b070f4a381e71a48f loader/efi/fdt: Add fdtdump command to 
 0cfec355d027a5a0692d52d6d6dbb8da0ab48f61 osdep/devmapper/getroot: Unmark 2 strings for translation
 f171122f03a5e0feca9541b50ef1bfd693c5fb21 loader/emu/linux: Fix determination of program name
 828717833fd18958199d731e366ef3fe997f2444 disk/cryptodisk: Fix translatable message
-9a2134a70fc6c7cad6d6954db5ab6732828dbfc1 tests: Add test for ZFS zstd
-f96df6fe9f6faa328c82820af88f14af07b2c9b9 fs/zfs/zfs: Add support for zstd compression
-55d35d62831af122fadf33c4bc8cd53aada949cb kern/efi/mm: Detect calls to grub_efi_drop_alloc() with wrong page counts
+T 9a2134a70fc6c7cad6d6954db5ab6732828dbfc1 tests: Add test for ZFS zstd
+M f96df6fe9f6faa328c82820af88f14af07b2c9b9 fs/zfs/zfs: Add support for zstd compression
+B 55d35d62831af122fadf33c4bc8cd53aada949cb kern/efi/mm: Detect calls to grub_efi_drop_alloc() with wrong page counts
 61f1d0a612a01c2f48f718ff04590ff481e028f8 kern/efi/mm: Change grub_efi_allocate_pages_real() to call semantically correct free function
 dc0a3a27d67a6b1639d155cc69e8537077af1047 kern/efi/mm: Change grub_efi_mm_add_regions() to keep track of map allocation size
 b990df0bef9eb9f8ed4a111dfb0cdf6f88ff8829 tests/util/grub-fs-tester: Fix EROFS label tests in grub-fs-tester
