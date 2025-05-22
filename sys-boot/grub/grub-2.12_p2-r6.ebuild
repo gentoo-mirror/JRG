@@ -71,7 +71,7 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
 	"${FILESDIR}"/grub-2.12-fwsetup.patch
-	"${FILESDIR}"/grub-2.12-zfs-identify.patch   # Bug 956414.
+	"${FILESDIR}"/grub-2.12-zfs-zstd-compression-support.patch   # Bug 956414.
 	"${WORKDIR}"/grub-2.12-bash-completion.patch
 )
 
