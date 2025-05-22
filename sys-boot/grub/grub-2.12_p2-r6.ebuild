@@ -1,12 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 # This ebuild uses 3 special global variables:
-# GRUB_BOOTSTRAP: Invoke bootstrap (gnulib)
-# GRUB_AUTOGEN: Invoke autogen.sh
-# GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf
+# GRUB_BOOTSTRAP: Depend on python and invoke bootstrap (gnulib).
+# GRUB_AUTOGEN: Depend on python and invoke autogen.sh.
+# GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf.
 #
 # When applying patches:
 # If gnulib is updated, set GRUB_BOOTSTRAP=1
@@ -16,6 +16,7 @@ EAPI=8
 # If any of the above applies to a user patch, the user should set the
 # corresponding variable in make.conf or the environment.
 
+GRUB_AUTORECONF=1
 PYTHON_COMPAT=( python3_{10..13} )
 WANT_LIBTOOL=none
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
@@ -25,66 +26,59 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 fi
 
 inherit bash-completion-r1 eapi9-ver flag-o-matic multibuild optfeature
-inherit python-any-r1 secureboot toolchain-funcs autotools
+inherit python-any-r1 secureboot toolchain-funcs
 
-DESCRIPTION="GNU GRUB boot loader"
+DESCRIPTION="GNU GRUB boot loader w/ Cherry Picked Upstream ZFS Filesystem Identification Patch"
 HOMEPAGE="https://www.gnu.org/software/grub/"
 
 MY_P=${P}
-case "${PV}" in
-	# Head of master branch. This is a Gentoo convention.
-	9999)
-		inherit git-r3
-		EGIT_REPO_URI="file:///home/jgraham/userspace/Projects/grub/"
-		EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
-		GRUB_AUTORECONF=1
-		GRUB_BOOTSTRAP=1
-		;;
-	# Local default path research branch.
-	9998)
-		inherit git-r3
-		EGIT_REPO_URI="file:///home/jgraham/userspace/Projects/grub/"
-		EGIT_COMMIT="f96df6fe9f6faa328c82820af88f14af07b2c9b9"
-		GRUB_AUTORECONF=1
-		GRUB_BOOTSTRAP=1
-		;;
-	# Normal upstream tarball releases.
-	*)
-		inherit verify-sig
+if [[ ${PV} != 9999 ]]; then
+	inherit verify-sig
 
-		if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
-			# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
-			MY_P=${P/_/'~'}
-			SRC_URI="
+	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
+		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
+		MY_P=${P/_/'~'}
+		SRC_URI="
 			https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz
 			verify-sig? ( https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz.sig )
 		"
-			S=${WORKDIR}/${MY_P}
+		S=${WORKDIR}/${MY_P}
+	else
+		if   [[ $(ver_cut 3) == p ]] ; then
+			MY_PV=$(ver_cut 1-2)
+		elif [[ $(ver_cut 4) == p ]] ; then
+			MY_PV=$(ver_cut 1-3)
 		else
-			SRC_URI="
-			mirror://gnu/${PN}/${P}.tar.xz
-			verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
-		"
-			S=${WORKDIR}/${P%_*}
+			MY_PV=${PV}
 		fi
-		BDEPEND="verify-sig? ( sec-keys/openpgp-keys-danielkiper )"
-		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-		;;
-esac
+		MY_P="${PN}-${MY_PV}"
+		SRC_URI="
+			mirror://gnu/${PN}/${MY_P}.tar.xz
+			https://dev.gentoo.org/~floppym/dist/${MY_P}-bash-completion.patch.gz
+			verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.xz.sig )
+		"
+		S=${WORKDIR}/${P%_*}
+	fi
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-danielkiper )"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
+else
+	inherit git-r3
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
+fi
 
 PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
+	"${FILESDIR}"/grub-2.12-fwsetup.patch
+	"${FILESDIR}"/grub-2.12-zfs-identify.patch   # Bug 956414.
+	"${WORKDIR}"/grub-2.12-bash-completion.patch
 )
 
-DEJAVU_VER=2.37
-DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
-UNIFONT=unifont-16.0.02
-SRC_URI+="
-	fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
-	themes? ( https://downloads.sourceforge.net/project/dejavu/dejavu/${DEJAVU_VER}/${DEJAVU}.tar.bz2 )
-"
+DEJAVU=dejavu-sans-ttf-2.37
+UNIFONT=unifont-15.0.06
+SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
+	themes? ( https://downloads.sourceforge.net/dejavu/${DEJAVU}.zip )"
 
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-3.0 BitstreamVera )"
@@ -123,6 +117,7 @@ BDEPEND+="
 		sys-fs/squashfs-tools
 	)
 	themes? (
+		app-arch/unzip
 		media-libs/freetype:2
 		virtual/pkgconfig
 	)
@@ -162,22 +157,17 @@ pkg_setup() {
 }
 
 src_unpack() {
-	case "${PV}" in
-		9999|9998)
-			git-r3_src_unpack
-			pushd "${P}" >/dev/null || die
-			local GNULIB_URI="file:///home/jgraham/userspace/Projects/gnulib/"
-			local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
-			git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
-			git-r3_checkout "${GNULIB_URI}" gnulib
-			popd >/dev/null || die
-			;;
-		*)
-			if use verify-sig; then
-				verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig}
-			fi
-			;;
-	esac
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+		pushd "${P}" >/dev/null || die
+		local GNULIB_URI="https://git.savannah.gnu.org/git/gnulib.git"
+		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
+		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
+		git-r3_checkout "${GNULIB_URI}" gnulib
+		popd >/dev/null || die
+	elif use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig}
+	fi
 	default
 }
 
@@ -196,6 +186,10 @@ src_prepare() {
 	if [[ -n ${GRUB_AUTORECONF} ]]; then
 		eautoreconf
 	fi
+
+	# Avoid error due to extra_deps.lst missing from source tarball:
+	#       make[3]: *** No rule to make target 'grub-core/extra_deps.lst', needed by 'syminfo.lst'.  Stop.
+	echo "depends bli part_gpt" > grub-core/extra_deps.lst || die
 }
 
 grub_do() {
@@ -249,11 +243,11 @@ grub_configure() {
 	)
 
 	if use fonts; then
-		cp "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
+		ln -rs "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
 	fi
 
 	if use themes; then
-		cp "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
+		ln -rs "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
 	fi
 
 	local ECONF_SOURCE="${S}"
