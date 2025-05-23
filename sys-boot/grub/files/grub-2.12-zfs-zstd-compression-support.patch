@@ -1,3 +1,8 @@
+Patch fixes ZFS root filesystem dataset identification issues.
+
+This patch was mostly extracted from gub upstream commit f96df6fe9f6faa328c82820af88f14af07b2c9b9.
+See Gentoo Bugzilla https://bugs.gentoo.org/956414 for further details.
+
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
 index 7fa9446bd..705d73fab 100644
 --- a/grub-core/Makefile.core.def
