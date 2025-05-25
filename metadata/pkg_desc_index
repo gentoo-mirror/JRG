@@ -13,6 +13,6 @@ sys-apps/dtc 1.4.1: Open Firmware device tree compiler
 sys-apps/openrc 0.23.2_p1: OpenRC manages the services, startup and shutdown of a host
 sys-apps/portage 9997 9998_rc1: The package management and distribution system for Gentoo
 sys-block/mbuffer 20230301_p1 20240707_p1 20241007_p1 99999997: M(easuring)buffer is a replacement for buffer with additional functionality (+ JRG race condition patch)
-sys-boot/grub 2.12_p1-r4 2.12_p1-r5 2.12_p2-r6 9998: GNU GRUB boot loader
+sys-boot/grub 9998: GNU GRUB boot loader
 sys-fs/squashfs-tools 4.5.1-r1: tools to create and extract Squashfs filesystems
 sys-kernel/genkernel 9998: Gentoo automatic kernel building scripts
